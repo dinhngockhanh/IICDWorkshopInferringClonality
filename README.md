@@ -18,17 +18,20 @@ docker compose build
 
 ##  Activities during the presentation
 
-We will review definitions of tumor characteristics in [1]. 
+We will review definitions of tumor characteristics in [1].
+We will then go through the mechanisms of different mutation clustering methods, including PhyloWGS [2], PyClone-VI [3], SciClone [4], MOBSTER [5] and DECODE [6].
+We will compare their performance in ICGC-TCGA DREAM Challenge, a synthetic benchmarking study [7, 8].
 
 ##  References
 1.  Tarabichi M, Salcedo A, Deshwar AG, Ni Leathlobhair M, Wintersinger J, Wedge DC, Van Loo P, Morris QD, Boutros PC. A practical guide to cancer subclonal reconstruction from DNA sequencing. Nature methods (2021). https://doi.org/10.1038/s41592-020-01013-2
-2.  Salcedo A, Tarabichi M, Espiritu SM, Deshwar AG, David M, Wilson NM, Dentro S, Wintersinger JA, Liu LY, Ko M, Sivanandan S. A community effort to create standards for evaluating tumor subclonal reconstruction. Nature biotechnology (2020). https://doi.org/10.1038/s41587-019-0364-z
-3.  Salcedo A, Tarabichi M, Buchanan A, Espiritu SM, Zhang H, Zhu K, Ou Yang TH, Leshchiner I, Anastassiou D, Guan Y, Jang GH. Crowd-sourced benchmarking of single-sample tumor subclonal reconstruction. Nature biotechnology (2025). https://doi.org/10.1038/s41587-024-02250-y
-4.  Deshwar AG, Vembu S, Yung CK, Jang GH, Stein L, Morris Q. PhyloWGS: reconstructing subclonal composition and evolution from whole-genome sequencing of tumors. Genome biology (2015). https://doi.org/10.1186/s13059-015-0602-8
-5.  Gillis S, Roth A. PyClone-VI: scalable inference of clonal population structures using whole genome data. BMC bioinformatics (2020). https://doi.org/10.1186/s12859-020-03919-2
-6.  Miller CA, White BS, Dees ND, Griffith M, Welch JS, Griffith OL, Vij R, Tomasson MH, Graubert TA, Walter MJ, Ellis MJ. SciClone: inferring clonal architecture and tracking the spatial and temporal patterns of tumor evolution. PLoS computational biology (2014). https://doi.org/10.1371/journal.pcbi.1003665
-7.  Caravagna G, Heide T, Williams MJ, Zapata L, Nichol D, Chkhaidze K, Cross W, Cresswell GD, Werner B, Acar A, Chesler L. Subclonal reconstruction of tumors by using machine learning and population genetics. Nature genetics (2020). https://doi.org/10.1038/s41588-020-0675-5
-8.  Chen Y, Jaksik R, Terranova P, El Baghdadi S, Koval A, Kurpas MK, Tavaré S, Kimmel M, Dinh KN. Accurate detection of tumor clonality and ongoing expansion mode from genomic data. bioRxiv (2026). https://doi.org/10.64898/2026.06.15.732415
+2.  Deshwar AG, Vembu S, Yung CK, Jang GH, Stein L, Morris Q. PhyloWGS: reconstructing subclonal composition and evolution from whole-genome sequencing of tumors. Genome biology (2015). https://doi.org/10.1186/s13059-015-0602-8
+3.  Gillis S, Roth A. PyClone-VI: scalable inference of clonal population structures using whole genome data. BMC bioinformatics (2020). https://doi.org/10.1186/s12859-020-03919-2
+4.  Miller CA, White BS, Dees ND, Griffith M, Welch JS, Griffith OL, Vij R, Tomasson MH, Graubert TA, Walter MJ, Ellis MJ. SciClone: inferring clonal architecture and tracking the spatial and temporal patterns of tumor evolution. PLoS computational biology (2014). https://doi.org/10.1371/journal.pcbi.1003665
+5.  Caravagna G, Heide T, Williams MJ, Zapata L, Nichol D, Chkhaidze K, Cross W, Cresswell GD, Werner B, Acar A, Chesler L. Subclonal reconstruction of tumors by using machine learning and population genetics. Nature genetics (2020). https://doi.org/10.1038/s41588-020-0675-5
+6.  Chen Y, Jaksik R, Terranova P, El Baghdadi S, Koval A, Kurpas MK, Tavaré S, Kimmel M, Dinh KN. Accurate detection of tumor clonality and ongoing expansion mode from genomic data. bioRxiv (2026). https://doi.org/10.64898/2026.06.15.732415
+7.  Salcedo A, Tarabichi M, Espiritu SM, Deshwar AG, David M, Wilson NM, Dentro S, Wintersinger JA, Liu LY, Ko M, Sivanandan S. A community effort to create standards for evaluating tumor subclonal reconstruction. Nature biotechnology (2020). https://doi.org/10.1038/s41587-019-0364-z
+8.  Salcedo A, Tarabichi M, Buchanan A, Espiritu SM, Zhang H, Zhu K, Ou Yang TH, Leshchiner I, Anastassiou D, Guan Y, Jang GH. Crowd-sourced benchmarking of single-sample tumor subclonal reconstruction. Nature biotechnology (2025). https://doi.org/10.1038/s41587-024-02250-y
+
 
 
 # S8 亚克隆重建
