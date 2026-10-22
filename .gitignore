@@ -1,5 +1,6 @@
 # Instructor-only material. It stays on disk but is not part of the student repo.
 helper/
+docs/
 
 results/
 .venv/

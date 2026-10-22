@@ -1,7 +1,6 @@
 helper
 .git
 results
-data/prepared
 .venv
 **/__pycache__
 *.sif

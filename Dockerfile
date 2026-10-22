@@ -83,4 +83,14 @@ ENV PHYLOWGS_DIR=/opt/phylowgs \
     PATH="/opt/workshop/.venv/bin:/opt/python27/bin:${PATH}"
 
 WORKDIR /work
-CMD ["bash", "src/run_all.sh"]
+CMD ["bash", "-c", "printf '%s\\n' \
+  'Run one algorithm at a time:' \
+  '' \
+  '  docker compose run --rm workshop Rscript src/run_decode.R' \
+  '  docker compose run --rm workshop Rscript src/run_mobster.R' \
+  '  docker compose run --rm workshop Rscript src/run_sciclone.R' \
+  '  docker compose run --rm workshop bash src/run_pyclonevi.sh' \
+  '  docker compose run --rm workshop bash src/run_phylowgs.sh' \
+  '' \
+  'Each command writes results/<tool>/clones.tsv after the fit is saved.' \
+"]

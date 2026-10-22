@@ -1,21 +1,28 @@
 #!/usr/bin/env Rscript
 
-# MOBSTER on the diploid multiplicity-1 subset.
-# K = 1:3 and tail = TRUE/FALSE are the package defaults used in the cluster timing run.
-# parallel = FALSE keeps the fit on one core.
-# mobster_fit resets the RNG from its seed argument, so the configured seed is passed in.
+# Fit MOBSTER on diploid multiplicity-1 mutations, save the fit, then write clones.tsv.
+# MOBSTER clusters VAF. It does not estimate purity and does not read purity.
 
-source_file <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
-script_dir <- dirname(normalizePath(sub("^--file=", "", source_file[[1]]), mustWork = TRUE))
-source(file.path(script_dir, "load_params.R"))
+###======= Parameter Config =======================================
+sample_id <- "S8-noXY"
+# Passed into mobster_fit(seed = ...). That function resets its own RNG,
+# so set.seed alone would not control the fit.
+seed <- 1001L
+# FALSE keeps the fit on one core.
+parallel <- FALSE
+# Try 1, 2, and 3 Beta clusters. MOBSTER picks the best K.
+k_min <- 1L
+k_max <- 3L
+# Fit both with and without a power-law tail, then keep the better model.
+tail <- c(TRUE, FALSE)
 
-root <- workshop_root()
-params <- load_params(root)
-sample_id <- params$SAMPLE_ID
-seed <- as.integer(params$SEED)
+###======= Paths ==================================================
+file_arg <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
+root <- normalizePath(file.path(dirname(sub("^--file=", "", file_arg[[1]])), ".."))
 set.seed(seed)
 
-input_path <- file.path(root, "data", "prepared", "inputs", "mobster", paste0(sample_id, ".vaf.csv"))
+# Diploid, multiplicity 1, VAF already in (0, 1): mutation_id, vaf, alt_count, depth.
+input_path <- file.path(root, "data", "MOBSTER_mutation_table.csv")
 output_dir <- file.path(root, "results", "mobster")
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 if (!file.exists(input_path)) stop("Missing MOBSTER input: ", input_path)
@@ -25,7 +32,9 @@ if (!requireNamespace("mobster", quietly = TRUE)) {
 }
 suppressPackageStartupMessages(library(mobster))
 
+###======= Load input =============================================
 mut <- read.csv(input_path, stringsAsFactors = FALSE)
+# Drop any row whose VAF is missing or sits on the 0/1 boundary.
 keep <- !is.na(mut$vaf) & mut$vaf > 0 & mut$vaf < 1
 mut <- mut[keep, , drop = FALSE]
 write.table(
@@ -35,17 +44,19 @@ write.table(
 )
 cat("MOBSTER mutations:", nrow(mut), "\n")
 
+###======= Run MOBSTER ============================================
 started <- Sys.time()
 fit <- mobster_fit(
     data.frame(mutation_id = mut$mutation_id, VAF = mut$vaf, stringsAsFactors = FALSE),
-    K = seq.int(as.integer(params$MOBSTER_K_MIN), as.integer(params$MOBSTER_K_MAX)),
-    tail = c(TRUE, FALSE),
-    parallel = as_flag(params$MOBSTER_PARALLEL),
+    K = seq.int(k_min, k_max),
+    tail = tail,
+    parallel = parallel,
     seed = seed,
     description = sample_id
 )
 finished <- Sys.time()
 
+###======= Save results ===========================================
 saveRDS(fit, file.path(output_dir, paste0(sample_id, "_mobster_fit.rds")))
 pdf_path <- file.path(output_dir, paste0(sample_id, "_mobster_fit.pdf"))
 tryCatch(
@@ -59,7 +70,61 @@ tryCatch(
         cat("WARNING: MOBSTER plot failed:", conditionMessage(err), "\n")
     }
 )
-write_runtime(file.path(output_dir, "runtime.txt"), "mobster", started, finished)
+elapsed <- as.numeric(difftime(finished, started, units = "secs"))
+writeLines(
+    c(
+        "tool=mobster",
+        paste0("start=", format(started, "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")),
+        paste0("end=", format(finished, "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")),
+        paste0("elapsed_sec=", format(round(elapsed, 2), nsmall = 2))
+    ),
+    file.path(output_dir, "runtime.txt")
+)
+
+###======= Extract clones =========================================
+# clones.tsv columns: purity, n_clones, clone, ccf.
+# A cluster whose name contains "tail" is sequencing noise, not a clone.
+# These mutations are diploid with multiplicity 1, so
+#   ccf = 2 * mean(VAF) / sample_purity.
+# sample_purity is the cellularity in data/sample.tsv. It is only used for
+# that conversion. The purity column written below is the largest clone CCF.
+extract_clones <- function() {
+    best <- if (!is.null(fit$best)) fit$best else fit
+    data_frame <- as.data.frame(best$data)
+    if (!("cluster" %in% colnames(data_frame))) {
+        stop("MOBSTER best$data has no cluster column: ", paste(colnames(data_frame), collapse = ", "))
+    }
+    if (!("VAF" %in% colnames(data_frame))) stop("MOBSTER best$data has no VAF column.")
+
+    sample <- read.delim(file.path(root, "data", "sample.tsv"), stringsAsFactors = FALSE)
+    sample_purity <- sample$purity[[1]]
+    if (!is.finite(sample_purity) || sample_purity <= 0) stop("data/sample.tsv purity is not positive.")
+
+    labels <- as.character(data_frame$cluster)
+    means <- tapply(data_frame$VAF, labels, mean)
+    clone_ids <- names(means)[!grepl("tail", names(means), ignore.case = TRUE)]
+    # Order C1, C2, ... by the number in the label.
+    clone_ids <- clone_ids[order(suppressWarnings(as.integer(sub("^[^0-9]*", "", clone_ids))), clone_ids)]
+    ccfs <- 2 * as.numeric(means[clone_ids]) / sample_purity
+    if (length(ccfs) > 0L && any(!is.finite(ccfs))) stop("Clone CCF is not finite.")
+    purity <- if (length(ccfs) == 0L) NA_real_ else max(ccfs)
+    if (length(clone_ids) == 0L) {
+        clones <- data.frame(purity = "NA", n_clones = 0L, clone = "", ccf = "", stringsAsFactors = FALSE)
+    } else {
+        clones <- data.frame(
+            purity = sprintf("%.8g", purity),
+            n_clones = length(clone_ids),
+            clone = clone_ids,
+            ccf = sprintf("%.8g", ccfs),
+            stringsAsFactors = FALSE
+        )
+    }
+    path <- file.path(output_dir, "clones.tsv")
+    write.table(clones, path, sep = "\t", quote = FALSE, row.names = FALSE)
+    cat("Wrote", path, "\n")
+}
+extract_clones()
+
 cat("MOBSTER clusters:\n")
 print(fit$best$Clusters)
 cat("MOBSTER finished.\n")
