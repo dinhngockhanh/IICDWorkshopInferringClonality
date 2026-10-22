@@ -1,3 +1,17 @@
+##  Installation
+
+Install and open [Docker](https://docs.docker.com/desktop/)
+
+```bash
+git clone https://github.com/dinhngockhanh/IICDWorkshopInferringClonality.git
+```
+
+In Terminal, go to the folder and run
+
+```bash
+docker compose build
+```
+
 # S8 亚克隆重建
 
 这个仓库在 DREAM 单样本 `S8-noXY` 上运行 DECODE、MOBSTER、sciClone、PyClone-VI 和 PhyloWGS，并把每个工具的结果收成同一张突变分配表。
