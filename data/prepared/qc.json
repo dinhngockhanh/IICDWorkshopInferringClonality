@@ -1,0 +1,134 @@
+{
+  "sample_id": "S8-noXY",
+  "purity": 0.683766856994925,
+  "ploidy": 1.8958699316085,
+  "n_mutations": 10751,
+  "copy_number_counts": {
+    "2,1": 918,
+    "1,1": 7898,
+    "1,0": 1930,
+    "0,0": 5
+  },
+  "multiplicity_counts": {
+    "1": 10501,
+    "2": 250
+  },
+  "n_battenberg_segments": 27,
+  "n_battenberg_segments_skipped": 0,
+  "skipped_battenberg_segments": [],
+  "n_subclonal_battenberg_segments": 3,
+  "subclonal_battenberg_segments": [
+    {
+      "chrom": "4",
+      "start": 132581378,
+      "end": 132890699,
+      "major_cn": 0,
+      "minor_cn": 0,
+      "frac": 0.600647737874261
+    },
+    {
+      "chrom": "13",
+      "start": 19589846,
+      "end": 114999838,
+      "major_cn": 1,
+      "minor_cn": 0,
+      "frac": 0.667931026956182
+    },
+    {
+      "chrom": "22",
+      "start": 16600330,
+      "end": 17208423,
+      "major_cn": 0,
+      "minor_cn": 0,
+      "frac": 0.553726390845245
+    }
+  ],
+  "n_uncovered_mutations": 137,
+  "n_gap_fill_mutations": 25,
+  "n_gap_fill_segments": 6,
+  "gap_fill_segments": [
+    {
+      "chrom": "1",
+      "start": 593063,
+      "end": 763080,
+      "major_cn": 2,
+      "minor_cn": 1
+    },
+    {
+      "chrom": "1",
+      "start": 249233277,
+      "end": 249233277,
+      "major_cn": 2,
+      "minor_cn": 1
+    },
+    {
+      "chrom": "9",
+      "start": 39894,
+      "end": 188599,
+      "major_cn": 1,
+      "minor_cn": 0
+    },
+    {
+      "chrom": "13",
+      "start": 19530425,
+      "end": 19530425,
+      "major_cn": 1,
+      "minor_cn": 0
+    },
+    {
+      "chrom": "21",
+      "start": 9591239,
+      "end": 14929061,
+      "major_cn": 1,
+      "minor_cn": 0
+    },
+    {
+      "chrom": "22",
+      "start": 50111808,
+      "end": 50483847,
+      "major_cn": 1,
+      "minor_cn": 0
+    }
+  ],
+  "dropped_zero_cn_mutation_ids": [
+    "4:132604652",
+    "4:132691244",
+    "22:16208440",
+    "22:16620565",
+    "22:17049725"
+  ],
+  "n_decode": 7898,
+  "n_mobster": 7898,
+  "n_sciclone": 7898,
+  "n_pyclonevi": 10496,
+  "n_phylowgs_ssm": 10751,
+  "n_phylowgs_cnv": 14,
+  "n_sciclone_depth_below_10": 6,
+  "gap_fill_mutation_ids": [
+    "1:593063",
+    "1:763080",
+    "1:249233277",
+    "9:39894",
+    "9:52145",
+    "9:188599",
+    "13:19530425",
+    "21:9591239",
+    "21:9701131",
+    "21:9775250",
+    "21:10089333",
+    "21:11053086",
+    "21:14444012",
+    "21:14475223",
+    "21:14606227",
+    "21:14638871",
+    "21:14681710",
+    "21:14824154",
+    "21:14884455",
+    "21:14929061",
+    "22:50111808",
+    "22:50254216",
+    "22:50284847",
+    "22:50421193",
+    "22:50483847"
+  ]
+}

@@ -1,0 +1,16 @@
+# Instructor-only material. It stays on disk but is not part of the student repo.
+helper/
+
+results/
+.venv/
+__pycache__/
+*.pyc
+.Rhistory
+.RData
+.Rproj.user/
+renv/library/
+renv/staging/
+renv/sandbox/
+*.sif
+.DS_Store
+bootstrap.log

@@ -1,0 +1,22 @@
+services:
+  workshop:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: clonality-workshop:s8
+    working_dir: /work
+    volumes:
+      - .:/work
+    environment:
+      OMP_NUM_THREADS: "1"
+      PYTHONUNBUFFERED: "1"
+      TMPDIR: /tmp/workshop
+      PHYLOWGS_DIR: /opt/phylowgs
+      PYTHON2: /opt/python27/bin/python
+      LD_LIBRARY_PATH: /opt/openssl11/lib
+      RGL_USE_NULL: "TRUE"
+    ulimits:
+      stack:
+        soft: -1
+        hard: -1
+    command: ["bash", "src/run_all.sh"]

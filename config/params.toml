@@ -1,0 +1,41 @@
+# Parameters for the S8-noXY workshop run.
+# DECODE, MOBSTER, sciClone, and PyClone-VI use the same settings as the
+# cluster single-sample timing run. PhyloWGS defaults to a short smoke chain.
+
+sample_id = "S8-noXY"
+seed = 1001
+
+[decode]
+# Package default particle schedule is rep(1000, 10). Do not override it.
+neutral_tail = false
+compute_parallel = false
+
+[mobster]
+# mobster_fit resets the RNG from its own seed argument. Pass seed from above.
+parallel = false
+k_min = 1
+k_max = 3
+
+[sciclone]
+minimum_depth = 10
+do_clustering_along_margins = false
+
+[pyclonevi]
+clusters = 10
+density = "beta-binomial"
+restarts = 10
+
+[phylowgs]
+# smoke | full
+mode = "smoke"
+chains = 1
+
+[phylowgs.smoke]
+burnin = 5
+mcmc = 5
+mh = 50
+
+[phylowgs.full]
+burnin = 1000
+mcmc = 2500
+mh = 1000

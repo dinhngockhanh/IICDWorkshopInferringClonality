@@ -1,0 +1,11 @@
+# One-off image used to generate renv.lock on Linux R 4.5.1.
+# Students build the workshop image from the repository Dockerfile instead.
+FROM rocker/r-ver:4.5.1
+
+COPY docker/apt-packages.txt /tmp/apt-packages.txt
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends $(cat /tmp/apt-packages.txt) \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY docker/bootstrap_renv.R /bootstrap_renv.R
+CMD ["Rscript", "/bootstrap_renv.R"]
