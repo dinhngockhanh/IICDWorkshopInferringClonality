@@ -1,4 +1,4 @@
-vb"""Point Python 2.7's Modules/Setup SSL block at /opt/openssl11."""
+"""Point Python 2.7's Modules/Setup SSL block at /opt/openssl11."""
 
 from pathlib import Path
 
