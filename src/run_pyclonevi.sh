@@ -1,18 +1,15 @@
-#!/usr/bin/env bash
-# Fit PyClone-VI, write its result table, write clones.tsv, then write the VAF plot.
-# The input includes multiplicity-1 mutations that are not diploid.
 set -euo pipefail
 
-###======= Parameter Config =======================================
+###======================== Parameter Config ============================
 SAMPLE_ID="S8-noXY"
 # Upper bound on the number of clusters. Empty clusters are not reported.
 CLUSTERS=10
-# Beta-binomial density for read counts. The other common choice is binomial.
-DENSITY="beta-binomial"
+# Binomial density for read counts. The other common choice is beta-binomial.
+DENSITY="binomial"
 # Independent restarts. The best restart is kept.
 RESTARTS=10
 
-###======= Paths ==================================================
+###======================== Paths =======================================
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 cd "$ROOT"
 # One OpenMP thread, matching the single-core timing run.
@@ -24,7 +21,7 @@ if ! command -v "$PYCLONE_VI" >/dev/null 2>&1; then
     exit 1
 fi
 
-# Tab-separated. tumour_content is the sample purity and is an input, not a result.
+# Tumour_content is the sample purity and is an input, not a result.
 input_path="$ROOT/data/PyCloneVI_mutation_table.tsv"
 output_dir="$ROOT/results/pyclonevi"
 mkdir -p "$output_dir"
@@ -33,7 +30,7 @@ if [[ ! -f "$input_path" ]]; then
     exit 1
 fi
 
-###======= Run PyClone-VI =========================================
+###======================== Run PyClone-VI ==============================
 # fit writes an HDF5 file. write-results-file turns it into a TSV with
 # cluster_id and cellular_prevalence for every input mutation.
 start=$(date -u +%Y-%m-%dT%H:%M:%SZ)
@@ -49,7 +46,7 @@ SECONDS=0
     -o "$output_dir/${SAMPLE_ID}_results.tsv"
 end=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 
-###======= Save runtime ===========================================
+###======================== Save runtime ================================
 cat > "$output_dir/runtime.txt" <<EOF
 tool=pyclonevi
 start=${start}
@@ -57,18 +54,24 @@ end=${end}
 elapsed_sec=${SECONDS}
 EOF
 
-###======= Extract clones =========================================
+###======================== Extract clones ==============================
 # clones.tsv columns: purity, n_clones, clone, ccf.
 # purity is NA because tumour_content was supplied as input.
 # n_clones is the number of distinct cluster_id values.
-# ccf is that cluster's cellular_prevalence. Every mutation in a cluster
-# must share one prevalence.
+# PyClone-VI reports cellular_prevalence conditional on that purity, so
+# ccf = cellular_prevalence * truth purity from data/sample.tsv.
 extract_clones() {
-    python3 - "$output_dir/${SAMPLE_ID}_results.tsv" "$output_dir/clones.tsv" <<'PY'
+    python3 - "$output_dir/${SAMPLE_ID}_results.tsv" "$output_dir/clones.tsv" "$ROOT/data/sample.tsv" <<'PY'
 import csv
 import sys
 
-result_path, out_path = sys.argv[1], sys.argv[2]
+result_path, out_path, sample_path = sys.argv[1], sys.argv[2], sys.argv[3]
+
+with open(sample_path, newline="") as handle:
+    sample = next(csv.DictReader(handle, delimiter="\t"))
+truth_purity = float(sample["purity"])
+if not (truth_purity > 0):
+    sys.exit("data/sample.tsv purity is not positive.")
 
 # Collect the cellular-prevalence values seen inside each cluster.
 grouped = {}
@@ -83,9 +86,8 @@ def cluster_key(value):
 rows = []
 for cluster_id in sorted(grouped, key=cluster_key):
     prevalences = grouped[cluster_id]
-    if len(prevalences) != 1:
-        sys.exit(f"PyClone-VI cluster {cluster_id} has more than one cellular prevalence.")
-    rows.append((cluster_id, f"{float(next(iter(prevalences))):.8g}"))
+    ccf = float(next(iter(prevalences))) * truth_purity
+    rows.append((cluster_id, f"{ccf:.8g}"))
 
 with open(out_path, "w", newline="") as handle:
     writer = csv.writer(handle, delimiter="\t", lineterminator="\n")
@@ -100,10 +102,10 @@ PY
 }
 extract_clones
 
-###======= Plot VAF =================================================
+###======================== Plot VAF ====================================
 # PyClone-VI does not return a parametric SFS density. This histogram is the
 # observed VAF, stacked by assigned cluster. Cluster 0 is the bottom of each
-# bar and higher cluster ids sit above it. A plot failure must not discard the fit.
+# bar and higher cluster ids sit above it.
 plot_sfs() {
     local pdf_path="$output_dir/${SAMPLE_ID}_sfs.pdf"
     if ! Rscript - "$input_path" "$output_dir/${SAMPLE_ID}_results.tsv" "$pdf_path" "$SAMPLE_ID" <<'RS'

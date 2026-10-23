@@ -1,12 +1,6 @@
-#!/usr/bin/env Rscript
+###======================== Parameter Config ============================
 
-# Fit MOBSTER on diploid multiplicity-1 mutations, save the fit, then write clones.tsv.
-# MOBSTER clusters VAF. It does not estimate purity and does not read purity.
-
-###======= Parameter Config =======================================
 sample_id <- "S8-noXY"
-# Passed into mobster_fit(seed = ...). That function resets its own RNG,
-# so set.seed alone would not control the fit.
 seed <- 1001L
 # FALSE keeps the fit on one core.
 parallel <- FALSE
@@ -16,7 +10,7 @@ k_max <- 3L
 # Fit both with and without a power-law tail, then keep the better model.
 tail <- c(TRUE, FALSE)
 
-###======= Paths ==================================================
+###======================== Paths =======================================
 file_arg <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
 root <- normalizePath(file.path(dirname(sub("^--file=", "", file_arg[[1]])), ".."))
 set.seed(seed)
@@ -32,7 +26,7 @@ if (!requireNamespace("mobster", quietly = TRUE)) {
 }
 suppressPackageStartupMessages(library(mobster))
 
-###======= Load input =============================================
+###======================== Load input ==================================
 mut <- read.csv(input_path, stringsAsFactors = FALSE)
 # Drop any row whose VAF is missing or sits on the 0/1 boundary.
 keep <- !is.na(mut$vaf) & mut$vaf > 0 & mut$vaf < 1
@@ -44,7 +38,7 @@ write.table(
 )
 cat("MOBSTER mutations:", nrow(mut), "\n")
 
-###======= Run MOBSTER ============================================
+###======================== Run MOBSTER =================================
 started <- Sys.time()
 fit <- mobster_fit(
     data.frame(mutation_id = mut$mutation_id, VAF = mut$vaf, stringsAsFactors = FALSE),
@@ -56,7 +50,7 @@ fit <- mobster_fit(
 )
 finished <- Sys.time()
 
-###======= Save results ===========================================
+###======================== Save results ================================
 saveRDS(fit, file.path(output_dir, paste0(sample_id, "_mobster_fit.rds")))
 pdf_path <- file.path(output_dir, paste0(sample_id, "_mobster_fit.pdf"))
 tryCatch(
@@ -81,13 +75,13 @@ writeLines(
     file.path(output_dir, "runtime.txt")
 )
 
-###======= Extract clones =========================================
+###======================== Extract clones ==============================
 # clones.tsv columns: purity, n_clones, clone, ccf.
-# A cluster whose name contains "tail" is sequencing noise, not a clone.
+# A cluster whose name contains "tail" is not a clone.
 # These mutations are diploid with multiplicity 1, so
-#   ccf = 2 * mean(VAF) / sample_purity.
-# sample_purity is the cellularity in data/sample.tsv. It is only used for
-# that conversion. The purity column written below is the largest clone CCF.
+#   ccf = 2 * mean(VAF).
+# The purity column is the largest clone CCF.
+
 extract_clones <- function() {
     best <- if (!is.null(fit$best)) fit$best else fit
     data_frame <- as.data.frame(best$data)
@@ -96,16 +90,12 @@ extract_clones <- function() {
     }
     if (!("VAF" %in% colnames(data_frame))) stop("MOBSTER best$data has no VAF column.")
 
-    sample <- read.delim(file.path(root, "data", "sample.tsv"), stringsAsFactors = FALSE)
-    sample_purity <- sample$purity[[1]]
-    if (!is.finite(sample_purity) || sample_purity <= 0) stop("data/sample.tsv purity is not positive.")
-
     labels <- as.character(data_frame$cluster)
     means <- tapply(data_frame$VAF, labels, mean)
     clone_ids <- names(means)[!grepl("tail", names(means), ignore.case = TRUE)]
     # Order C1, C2, ... by the number in the label.
     clone_ids <- clone_ids[order(suppressWarnings(as.integer(sub("^[^0-9]*", "", clone_ids))), clone_ids)]
-    ccfs <- 2 * as.numeric(means[clone_ids]) / sample_purity
+    ccfs <- 2 * as.numeric(means[clone_ids])
     if (length(ccfs) > 0L && any(!is.finite(ccfs))) stop("Clone CCF is not finite.")
     purity <- if (length(ccfs) == 0L) NA_real_ else max(ccfs)
     if (length(clone_ids) == 0L) {

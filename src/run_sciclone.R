@@ -1,10 +1,4 @@
-#!/usr/bin/env Rscript
-
-# Fit sciClone on the same diploid mutations as MOBSTER, save the fit, then write clones.tsv.
-# Copy-number calls and the LOH bed are passed in. Shallow mutations are removed
-# inside sciClone, not in the input file.
-
-###======= Parameter Config =======================================
+###======================== Parameter Config ============================
 sample_id <- "S8-noXY"
 seed <- 1001L
 # Mutations with depth below this value are dropped by sciClone during the fit.
@@ -12,7 +6,7 @@ minimum_depth <- 10L
 # FALSE clusters on VAF only, not along the margins of the VAF distribution.
 do_clustering_along_margins <- FALSE
 
-###======= Paths ==================================================
+###======================== Paths =======================================
 file_arg <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
 root <- normalizePath(file.path(dirname(sub("^--file=", "", file_arg[[1]])), ".."))
 set.seed(seed)
@@ -34,13 +28,13 @@ if (!requireNamespace("sciClone", quietly = TRUE)) {
 }
 suppressPackageStartupMessages(library(sciClone))
 
-###======= Load input =============================================
+###======================== Load input ==================================
 vafs <- read.delim(vaf_path, stringsAsFactors = FALSE)
 copy_number <- read.delim(cn_path, stringsAsFactors = FALSE)
 loh <- read.delim(loh_path, header = FALSE, stringsAsFactors = FALSE)
 cat("sciClone mutations:", nrow(vafs), " segments:", nrow(copy_number), " LOH regions:", nrow(loh), "\n")
 
-###======= Run sciClone ===========================================
+###======================== Run sciClone ================================
 started <- Sys.time()
 fit <- sciClone(
     vafs = vafs,
@@ -56,7 +50,7 @@ if (is.null(fit)) {
     stop("sciClone returned NULL. No copy-number neutral sites were clustered.")
 }
 
-###======= Save results ===========================================
+###======================== Save results ================================
 saveRDS(fit, file.path(output_dir, paste0(sample_id, "_sciclone.rds")))
 cluster_path <- file.path(output_dir, paste0(sample_id, "_clusters.tsv"))
 writeClusterTable(fit, cluster_path)
@@ -76,15 +70,14 @@ writeLines(
     file.path(output_dir, "runtime.txt")
 )
 
-###======= Extract clones =========================================
+###======================== Extract clones ==============================
 # clones.tsv columns: purity, n_clones, clone, ccf.
 # fit@clust$cluster.means is samples x clusters, on the VAF fraction scale (0 to 1),
 # even though the input file stores VAF as a percent.
 # This workshop has one sample, so the matrix has one row and one column per clone.
 # For diploid multiplicity-1 mutations,
-#   ccf = 2 * cluster_mean / sample_purity.
-# sample_purity is the cellularity in data/sample.tsv. The purity column written
-# below is the largest clone CCF. Mutations dropped for low depth are not listed.
+#   ccf = 2 * cluster_mean.
+# The purity column is the largest clone CCF. Mutations dropped for low depth are not listed.
 extract_clones <- function() {
     mat <- as.matrix(fit@clust$cluster.means)
     if (nrow(mat) == 1L) {
@@ -94,10 +87,7 @@ extract_clones <- function() {
     } else {
         means <- as.numeric(mat[1, ])
     }
-    sample <- read.delim(file.path(root, "data", "sample.tsv"), stringsAsFactors = FALSE)
-    sample_purity <- sample$purity[[1]]
-    if (!is.finite(sample_purity) || sample_purity <= 0) stop("data/sample.tsv purity is not positive.")
-    ccfs <- 2 * means / sample_purity
+    ccfs <- 2 * means
     if (length(ccfs) > 0L && any(!is.finite(ccfs))) stop("Clone CCF is not finite.")
     purity <- if (length(ccfs) == 0L) NA_real_ else max(ccfs)
     if (length(means) == 0L) {

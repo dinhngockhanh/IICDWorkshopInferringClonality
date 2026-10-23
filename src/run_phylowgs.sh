@@ -1,11 +1,7 @@
-#!/usr/bin/env bash
-# Run one PhyloWGS chain, write its JSON summary, write clones.tsv, then write the tree plot.
-# Sample purity is not an input. PhyloWGS infers cellular prevalence.
 set -euo pipefail
 
-###======= Parameter Config =======================================
+###======================== Parameter Config ============================
 SAMPLE_ID="S8-noXY"
-# Random seed passed to evolve.py as --random-seed. One chain only.
 SEED=1001
 # smoke: short chain, checks that the install and inputs run.
 # full: the workshop's formal chain. Change this one word to switch.
@@ -26,7 +22,7 @@ else
     exit 1
 fi
 
-###======= Runtime environment ====================================
+###======================== Runtime environment =========================
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 cd "$ROOT"
 export OMP_NUM_THREADS="${OMP_NUM_THREADS:-1}"
@@ -45,7 +41,7 @@ if [[ ! -f "$PHYLOWGS_DIR/evolve.py" || ! -f "$PHYLOWGS_DIR/mh.o" ]]; then
     exit 1
 fi
 
-###======= Inputs and output directory ============================
+###======================== Inputs and output directory =================
 # Simple somatic mutations. Columns: id, gene, a, d, mu_r, mu_v.
 ssm="$ROOT/data/PhyloWGS_ssm.txt"
 # Copy-number records. cell_prev here is the CN fraction, not sample purity.
@@ -60,7 +56,7 @@ mkdir -p "$output_dir"
 # evolve.py needs a large stack. A failed ulimit is a warning, not a hard stop.
 ulimit -s unlimited || echo "WARNING: could not set unlimited stack size; PhyloWGS may crash." >&2
 
-###======= Run PhyloWGS ===========================================
+###======================== Run PhyloWGS ================================
 start=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 SECONDS=0
 (
@@ -83,7 +79,7 @@ SECONDS=0
 printf '%s\n' "$MODE" > "$output_dir/mcmc_mode.txt"
 end=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 
-###======= Save runtime ===========================================
+###======================== Save runtime ================================
 cat > "$output_dir/runtime.txt" <<EOF
 tool=phylowgs
 mode=${MODE}
@@ -96,7 +92,7 @@ end=${end}
 elapsed_sec=${SECONDS}
 EOF
 
-###======= Extract clones =========================================
+###======================== Extract clones ==============================
 # clones.tsv columns: purity, n_clones, clone, ccf.
 # The tree with the largest tree_densities value is used.
 # Population 0 is the normal root and has no mutations, so it is not a clone.
@@ -182,7 +178,7 @@ PY
 }
 extract_clones
 
-###======= Plot selected tree ======================================
+###======================== Plot selected tree ==========================
 # PhyloWGS has no fitted-SFS PDF. The official witness/ viewer is a browser
 # app and is not used here. This figure is the same tree as clones.tsv:
 # the one with the largest tree_densities value. Population 0 is the normal
