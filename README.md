@@ -15,6 +15,20 @@ git clone https://github.com/dinhngockhanh/IICDWorkshopInferringClonality.git
 docker compose build
 ```
 
+## Activities during the Workshop
+
+We will first review definitions of tumor characteristics and important metrics when analyzing DNA-sequencing data from [1].
+We will then examine each mutation clustering method in detail.
+
+### PhyloWGS
+
+
+We will then go through the mechanisms of different mutation clustering methods, including PhyloWGS [2], PyClone-VI [3], SciClone [4], MOBSTER [5] and DECODE [6].
+We will compare their performance in ICGC-TCGA DREAM Challenge, a synthetic benchmarking study [7, 8].
+
+
+
+
 The first build installs the R packages and PyClone-VI, and compiles PhyloWGS. It takes a long time. Run one algorithm at a time:
 
 ```bash
@@ -38,12 +52,6 @@ docker compose run --rm workshop bash src/run_phylowgs.sh
 ```
 
 The full chain is burn-in 1000, 2500 MCMC samples, 1000 Metropolis–Hastings iterations, and still one chain. Expect hours to days. Do not compare smoke output with a full chain.
-
-## Activities during the presentation
-
-We will review definitions of tumor characteristics in [1].
-We will then go through the mechanisms of different mutation clustering methods, including PhyloWGS [2], PyClone-VI [3], SciClone [4], MOBSTER [5] and DECODE [6].
-We will compare their performance in ICGC-TCGA DREAM Challenge, a synthetic benchmarking study [7, 8].
 
 ## References
 
