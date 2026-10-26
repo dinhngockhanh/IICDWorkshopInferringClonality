@@ -19,6 +19,11 @@ docker compose build
 
 We will first review definitions of tumor characteristics and important metrics when analyzing DNA-sequencing data from [1].
 We will then examine each mutation clustering method in detail, using a synthetic tumor sample from the ICGC-TCGA DREAM Challenge [2, 3] as example.
+The subsections below describe each algorithm; to execute all methods at once, please run
+
+```bash
+docker compose run --rm workshop
+```
 
 ### PhyloWGS
 
@@ -31,40 +36,23 @@ docker compose run --rm workshop bash src/run_phylowgs.sh
 which inputs the mutation table from file `PhyloWGS_ssm.txt` and the copy number profile from file `PhyloWGS_cnv.txt` in folder [data/](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/tree/main/data).
 
 To save time during the Workshop, file `run_phylowgs.sh` executes PhyloWGS with a smoke test (`MODE = "smoke"`; one MCMC chain with parameters `BURNIN = 5, MCMC = 5, MH = 50`).
-In practice, it is highly recommended to run PhyloWGS with default parameters (`BURNIN = 1000, MCMC = 2500, MH = 1000`), by setting `MODE = "full"` in line 9 of file `run_phylowgs.sh` in folder [src/](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/blob/main/src/).
+In practice, it is highly recommended to run PhyloWGS with default parameters (`BURNIN = 1000, MCMC = 2500, MH = 1000`), by setting `MODE = "full"` in line 9 of file `run_phylowgs.sh` in folder [src/](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/blob/main/src/) before running the command line above.
 Please note that PhyloWGS with default parameters may take hours to days to analyze one sample.
 
 ========================================================================
 
 We will then go through the mechanisms of different mutation clustering methods, including PhyloWGS [4], PyClone-VI [5], SciClone [6], MOBSTER [7] and DECODE [8].
-We will compare their performance in ICGC-TCGA DREAM Challenge, a synthetic benchmarking study [7, 8].
-
-
-
-
-The first build installs the R packages and PyClone-VI, and compiles PhyloWGS. It takes a long time. Run one algorithm at a time:
 
 ```bash
 docker compose run --rm workshop Rscript src/run_decode.R
 docker compose run --rm workshop Rscript src/run_mobster.R
 docker compose run --rm workshop Rscript src/run_sciclone.R
 docker compose run --rm workshop bash src/run_pyclonevi.sh
-docker compose run --rm workshop bash src/run_phylowgs.sh
 ```
 
 `docker compose run --rm workshop` with no command only prints these five commands. Inputs are already in `data/`.
 
 DECODE uses the package default particle schedule and can take hours on about 8000 diploid mutations. PyClone-VI is usually a few minutes; the first run also compiles numba. Allow about 16 GB of memory for MOBSTER and sciClone. PhyloWGS runs a short smoke chain unless you follow the instructions below.
-
-## Running the full PhyloWGS chain
-
-The default `MODE` at the top of `src/run_phylowgs.sh` is `"smoke"` (burn-in 5, 5 MCMC samples, 50 Metropolis–Hastings iterations, one chain). To run the formal chain, change that one word to `"full"`, then run:
-
-```bash
-docker compose run --rm workshop bash src/run_phylowgs.sh
-```
-
-The full chain is burn-in 1000, 2500 MCMC samples, 1000 Metropolis–Hastings iterations, and still one chain. Expect hours to days. Do not compare smoke output with a full chain.
 
 ## References
 
