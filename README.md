@@ -2,7 +2,7 @@
 
 ## Installation
 
-1. Install and open [Docker](https://docs.docker.com/desktop/)
+1. Install Docker [here](https://docs.docker.com/desktop/) then open it
 2. Download the library with
 
 ```bash
