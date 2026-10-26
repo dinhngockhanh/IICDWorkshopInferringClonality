@@ -49,6 +49,16 @@ docker compose run --rm workshop bash src/run_pyclonevi.sh
 
 which inputs the mutation table with copy number and sample purity annotation from file `PyCloneVI_mutation_table.tsv` in folder [data/](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/tree/main/data).
 
+### SciClone
+
+We can run SciClone [6] with
+
+```bash
+docker compose run --rm workshop Rscript src/run_sciclone.R
+```
+
+which inputs the mutation table from file `sciClone_mutation_table.tsv`, the copy number profile from file `sciClone_cn.tsv` and list of regions with loss of heterogeneity (LOH) to exclude in the analysis from file `sciClone_exclude_loh.bed` in folder [data/](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/tree/main/data).
+
 ========================================================================
 
 We will then go through the mechanisms of different mutation clustering methods, including PhyloWGS [4], PyClone-VI [5], SciClone [6], MOBSTER [7] and DECODE [8].
@@ -56,7 +66,6 @@ We will then go through the mechanisms of different mutation clustering methods,
 ```bash
 docker compose run --rm workshop Rscript src/run_decode.R
 docker compose run --rm workshop Rscript src/run_mobster.R
-docker compose run --rm workshop Rscript src/run_sciclone.R
 ```
 
 `docker compose run --rm workshop` with no command only prints these five commands. Inputs are already in `data/`.
