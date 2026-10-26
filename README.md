@@ -3,7 +3,7 @@
 ## Installation
 
 1. Install Docker [here](https://docs.docker.com/desktop/) then open it
-2. Download the library with
+2. Download this library with
 
 ```bash
 git clone https://github.com/dinhngockhanh/IICDWorkshopInferringClonality.git
@@ -22,6 +22,13 @@ We will then examine each mutation clustering method in detail, using a syntheti
 
 ### PhyloWGS
 
+We can run PhyloWGS [4] with
+
+```bash
+docker compose run --rm workshop bash src/run_phylowgs.sh
+```
+
+which inputs files `PhyloWGS_ssm.txt`
 
 ========================================================================
 
