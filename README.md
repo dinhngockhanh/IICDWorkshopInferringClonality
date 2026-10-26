@@ -39,6 +39,16 @@ To save time during the Workshop, file `run_phylowgs.sh` executes PhyloWGS with 
 In practice, it is highly recommended to run PhyloWGS with default parameters (`BURNIN = 1000, MCMC = 2500, MH = 1000`), by setting `MODE = "full"` in line 9 of file `run_phylowgs.sh` in folder [src/](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/blob/main/src/) before running the command line above.
 Please note that PhyloWGS with default parameters may take hours to days to analyze one sample.
 
+### PyClone-VI
+
+We can run PyClone-VI [5] with
+
+```bash
+docker compose run --rm workshop bash src/run_pyclonevi.sh
+```
+
+which inputs the mutation table with copy number and sample purity annotation from file `PyCloneVI_mutation_table.tsv` in folder [data/](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/tree/main/data).
+
 ========================================================================
 
 We will then go through the mechanisms of different mutation clustering methods, including PhyloWGS [4], PyClone-VI [5], SciClone [6], MOBSTER [7] and DECODE [8].
@@ -47,7 +57,6 @@ We will then go through the mechanisms of different mutation clustering methods,
 docker compose run --rm workshop Rscript src/run_decode.R
 docker compose run --rm workshop Rscript src/run_mobster.R
 docker compose run --rm workshop Rscript src/run_sciclone.R
-docker compose run --rm workshop bash src/run_pyclonevi.sh
 ```
 
 `docker compose run --rm workshop` with no command only prints these five commands. Inputs are already in `data/`.
