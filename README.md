@@ -30,8 +30,8 @@ docker compose run --rm workshop bash src/run_phylowgs.sh
 
 which inputs the mutation table from file `PhyloWGS_ssm.txt` and the copy number profile from file `PhyloWGS_cnv.txt` in folder [data/](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/tree/main/data).
 
-To save time during the Workshop, file `run_phylowgs.sh` executes PhyloWGS with a short MCMC chain (`MODE = "smoke"`, with parameters `BURNIN = 5, MCMC = 5, MH = 50`).
-In practice, it is highly recommended to run the MCMC chain with default parameters (`BURNIN = 1000, MCMC = 2500, MH = 1000`), by setting `MODE = "full"` in line 9 of file [run_phylowgs.sh](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/blob/main/src/run_phylowgs.sh).
+To save time during the Workshop, file `run_phylowgs.sh` executes PhyloWGS with a smoke test (`MODE = "smoke"`; one MCMC chain with parameters `BURNIN = 5, MCMC = 5, MH = 50`).
+In practice, it is highly recommended to run PhyloWGS with default parameters (`BURNIN = 1000, MCMC = 2500, MH = 1000`), by setting `MODE = "full"` in line 9 of file [run_phylowgs.sh](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/blob/main/src/run_phylowgs.sh).
 
 ========================================================================
 
