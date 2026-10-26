@@ -28,7 +28,7 @@ We can run PhyloWGS [4] with
 docker compose run --rm workshop bash src/run_phylowgs.sh
 ```
 
-which inputs files `PhyloWGS_ssm.txt`
+which inputs the mutation table from file `PhyloWGS_ssm.txt` and the copy number profile from file `PhyloWGS_cnv.txt` in folder [data/](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/tree/main/data).
 
 ========================================================================
 
