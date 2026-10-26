@@ -19,7 +19,7 @@ docker compose build
 
 We will first review definitions of tumor characteristics and important metrics when analyzing DNA-sequencing data from [1].
 We will then examine each mutation clustering method in detail, using a synthetic tumor sample from the ICGC-TCGA DREAM Challenge [2, 3] as example.
-The subsections below describe each algorithm; to execute all methods at once, please run
+The different options for which algorithm to implement can be listed by running
 
 ```bash
 docker compose run --rm workshop
@@ -59,18 +59,25 @@ docker compose run --rm workshop Rscript src/run_sciclone.R
 
 which inputs the mutation table from file `sciClone_mutation_table.tsv`, the copy number profile from file `sciClone_cn.tsv` and list of regions with loss of heterogeneity (LOH) to exclude in the analysis from file `sciClone_exclude_loh.bed` in folder [data/](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/tree/main/data).
 
-========================================================================
+### MOBSTER
 
-We will then go through the mechanisms of different mutation clustering methods, including PhyloWGS [4], PyClone-VI [5], SciClone [6], MOBSTER [7] and DECODE [8].
+We can run MOBSTER [7] with
 
 ```bash
-docker compose run --rm workshop Rscript src/run_decode.R
 docker compose run --rm workshop Rscript src/run_mobster.R
 ```
 
-`docker compose run --rm workshop` with no command only prints these five commands. Inputs are already in `data/`.
+which inputs the mutation table from file `MOBSTER_mutation_table.csv` in folder [data/](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/tree/main/data).
 
-DECODE uses the package default particle schedule and can take hours on about 8000 diploid mutations. PyClone-VI is usually a few minutes; the first run also compiles numba. Allow about 16 GB of memory for MOBSTER and sciClone. PhyloWGS runs a short smoke chain unless you follow the instructions below.
+### DECODE
+
+We can run DECODE [8] with
+
+```bash
+docker compose run --rm workshop Rscript src/run_decode.R
+```
+
+which inputs the mutation table from file `DECODE_mutation_table.tsv` in folder [data/](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/tree/main/data).
 
 ## References
 
