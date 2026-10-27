@@ -15,7 +15,7 @@ file_arg <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
 root <- normalizePath(file.path(dirname(sub("^--file=", "", file_arg[[1]])), ".."))
 set.seed(seed)
 
-# Diploid, multiplicity 1, VAF already in (0, 1): mutation_id, vaf, alt_count, depth.
+# Diploid, multiplicity 1, VAF already in (0, 1): mutation_id, vaf.
 input_path <- file.path(root, "data", "MOBSTER_mutation_table.csv")
 output_dir <- file.path(root, "results", "mobster")
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
