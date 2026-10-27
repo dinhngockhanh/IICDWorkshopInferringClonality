@@ -37,6 +37,7 @@ which inputs the mutation table from file `PhyloWGS_ssm.txt` and the copy number
 
 To save time during the Workshop, file `run_phylowgs.sh` executes PhyloWGS with a smoke test (`MODE = "smoke"`; one MCMC chain with parameters `BURNIN = 5, MCMC = 5, MH = 50`).
 In practice, it is highly recommended to run PhyloWGS with default parameters (`BURNIN = 1000, MCMC = 2500, MH = 1000`), by setting `MODE = "full"` in line 9 of file `run_phylowgs.sh` in folder [src/](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/blob/main/src/) before running the command line above.
+Results using default parameters are shown in file `S8-noXY.html`.
 Please note that PhyloWGS with default parameters may take hours to days to analyze one sample.
 
 ### PyClone-VI
