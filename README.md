@@ -36,8 +36,8 @@ docker compose run --rm workshop bash src/run_phylowgs.sh
 which inputs the mutation table from file `PhyloWGS_ssm.txt` and the copy number profile from file `PhyloWGS_cnv.txt` in folder [data/](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/tree/main/data).
 
 To save time during the Workshop, file `run_phylowgs.sh` executes PhyloWGS with a smoke test (`MODE = "smoke"`; one MCMC chain with parameters `BURNIN = 5, MCMC = 5, MH = 50`).
-In practice, it is highly recommended to run PhyloWGS with default parameters (`BURNIN = 1000, MCMC = 2500, MH = 1000`), by setting `MODE = "full"` in line 9 of file `run_phylowgs.sh` in folder [src/](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/blob/main/src/) before running the command line above.
-Please note that PhyloWGS with default parameters may take hours to days to analyze one sample.
+Set `MODE = "full"` at the top of [src/run_phylowgs.sh](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/blob/main/src/run_phylowgs.sh) to run four chains (`BURNIN = 1000, MCMC = 2500, MH = 5000`, seeds 1001–1004). That run may take days. After it finishes, build the one-page view with `python3 src/make_phylowgs_html.py`.
+A precomputed page from that four-chain run is [S8-noXY.html](S8-noXY.html) in this directory. Double-click it to open it.
 
 ### PyClone-VI
 
