@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PhyloWGS S8-noXY</title>
+<style>
+:root { color-scheme: light; }
+body {
+  margin: 0;
+  background: #f7f5f1;
+  color: #1c1917;
+  font: 16px/1.45 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+main {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+h1 { font-size: 2rem; line-height: 1.15; margin: 0 0 8px; }
+h2 { font-size: 1.25rem; margin: 0 0 8px; }
+p { margin: 0 0 12px; }
+.meta, .note { color: #44403c; }
+section {
+  background: #fff;
+  border: 1px solid #e7e5e4;
+  border-radius: 12px;
+  padding: 18px 18px 8px;
+  margin: 18px 0;
+}
+svg { width: 100%; height: auto; display: block; }
+.chart-title, .node-title { font: 600 14px "Source Sans 3", "Segoe UI", sans-serif; fill: #1c1917; }
+.axis-label, .tick, .node-detail, .best-label {
+  font: 12px "Source Sans 3", "Segoe UI", sans-serif;
+  fill: #44403c;
+}
+.best-label { font-weight: 700; fill: #9a3412; }
+.grid { stroke: #e7e5e4; stroke-width: 1; }
+.axis { stroke: #1c1917; stroke-width: 1.25; }
+.plot-bg { fill: #fafaf9; }
+.point { fill: #1f4e79; opacity: 0.55; }
+.cross { stroke: #c2410c; stroke-width: 2.5; }
+.edge { stroke: #44403c; stroke-width: 1.5; }
+.node-title, .node-detail { fill: #fff; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font: 15px "Source Sans 3", "Segoe UI", sans-serif;
+  margin: 8px 0 16px;
+}
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #e7e5e4; }
+th { color: #44403c; font-weight: 650; }
+</style>
+</head>
+<body>
+<main>
+<h1>PhyloWGS S8-noXY</h1>
+<p class="meta">Four chains, burn-in 1000, 2500 MCMC samples, 5000 Metropolis–Hastings iterations, seeds 1001–1004. The plots below use 300 of 10000 sampled trees, spread across posterior density. The marked tree is the highest-density tree, 8816.</p>
+
+<section>
+<h2>Variant allele frequency</h2>
+<p class="note">10751 mutations.</p>
+<svg viewBox="0 0 820 280" role="img">
+<title>All mutations</title>
+<text x="58" y="22" class="chart-title">All mutations</text>
+<line x1="58" y1="234.0" x2="804" y2="234.0" class="grid"/>
+<text x="50" y="238.0" class="tick" text-anchor="end">0</text>
+<line x1="58" y1="184.5" x2="804" y2="184.5" class="grid"/>
+<text x="50" y="188.5" class="tick" text-anchor="end">438</text>
+<line x1="58" y1="135.0" x2="804" y2="135.0" class="grid"/>
+<text x="50" y="139.0" class="tick" text-anchor="end">876</text>
+<line x1="58" y1="85.5" x2="804" y2="85.5" class="grid"/>
+<text x="50" y="89.5" class="tick" text-anchor="end">1313</text>
+<line x1="58" y1="36.0" x2="804" y2="36.0" class="grid"/>
+<text x="50" y="40.0" class="tick" text-anchor="end">1751</text>
+<rect x="59.0" y="233.9" width="35.3" height="0.1" fill="#1f4e79"/>
+<rect x="96.3" y="149.3" width="35.3" height="84.7" fill="#1f4e79"/>
+<rect x="133.6" y="135.1" width="35.3" height="98.9" fill="#1f4e79"/>
+<rect x="170.9" y="123.6" width="35.3" height="110.4" fill="#1f4e79"/>
+<rect x="208.2" y="74.6" width="35.3" height="159.4" fill="#1f4e79"/>
+<rect x="245.5" y="36.0" width="35.3" height="198.0" fill="#1f4e79"/>
+<rect x="282.8" y="55.4" width="35.3" height="178.6" fill="#1f4e79"/>
+<rect x="320.1" y="90.2" width="35.3" height="143.8" fill="#1f4e79"/>
+<rect x="357.4" y="140.8" width="35.3" height="93.2" fill="#1f4e79"/>
+<rect x="394.7" y="187.8" width="35.3" height="46.2" fill="#1f4e79"/>
+<rect x="432.0" y="186.7" width="35.3" height="47.3" fill="#1f4e79"/>
+<rect x="469.3" y="203.9" width="35.3" height="30.1" fill="#1f4e79"/>
+<rect x="506.6" y="217.4" width="35.3" height="16.6" fill="#1f4e79"/>
+<rect x="543.9" y="227.4" width="35.3" height="6.6" fill="#1f4e79"/>
+<rect x="581.2" y="232.9" width="35.3" height="1.1" fill="#1f4e79"/>
+<rect x="618.5" y="233.5" width="35.3" height="0.5" fill="#1f4e79"/>
+<rect x="655.8" y="233.8" width="35.3" height="0.2" fill="#1f4e79"/>
+<rect x="693.1" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="730.4" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="767.7" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<line x1="58" y1="36" x2="58" y2="234" class="axis"/>
+<line x1="58" y1="234" x2="804" y2="234" class="axis"/>
+<text x="58.0" y="252" class="tick" text-anchor="middle">0.00</text>
+<text x="431.0" y="252" class="tick" text-anchor="middle">0.50</text>
+<text x="804.0" y="252" class="tick" text-anchor="middle">1.00</text>
+<text x="431.0" y="274" class="axis-label" text-anchor="middle">VAF</text>
+<text x="16" y="135.0" class="axis-label" text-anchor="middle" transform="rotate(-90 16 135.0)">Mutations</text>
+</svg>
+</section>
+
+<section>
+<h2>Sampled trees</h2>
+<p class="note">Each point is one retained tree. The cross is tree 8816.</p>
+<svg viewBox="0 0 820 460" role="img">
+<title>Clustering index against branching</title>
+<text x="64" y="22" class="chart-title">Clustering index against branching</text>
+<rect x="64" y="36" width="736" height="372" class="plot-bg"/>
+<line x1="64.0" y1="36" x2="64.0" y2="408" class="grid"/>
+<line x1="64" y1="408.0" x2="800" y2="408.0" class="grid"/>
+<text x="64.0" y="426" class="tick" text-anchor="middle">0.321</text>
+<text x="56" y="412.0" class="tick" text-anchor="end">0.01</text>
+<line x1="248.0" y1="36" x2="248.0" y2="408" class="grid"/>
+<line x1="64" y1="315.0" x2="800" y2="315.0" class="grid"/>
+<text x="248.0" y="426" class="tick" text-anchor="middle">0.349</text>
+<text x="56" y="319.0" class="tick" text-anchor="end">0.07</text>
+<line x1="432.0" y1="36" x2="432.0" y2="408" class="grid"/>
+<line x1="64" y1="222.0" x2="800" y2="222.0" class="grid"/>
+<text x="432.0" y="426" class="tick" text-anchor="middle">0.376</text>
+<text x="56" y="226.0" class="tick" text-anchor="end">0.14</text>
+<line x1="616.0" y1="36" x2="616.0" y2="408" class="grid"/>
+<line x1="64" y1="129.0" x2="800" y2="129.0" class="grid"/>
+<text x="616.0" y="426" class="tick" text-anchor="middle">0.404</text>
+<text x="56" y="133.0" class="tick" text-anchor="end">0.21</text>
+<line x1="800.0" y1="36" x2="800.0" y2="408" class="grid"/>
+<line x1="64" y1="36.0" x2="800" y2="36.0" class="grid"/>
+<text x="800.0" y="426" class="tick" text-anchor="middle">0.432</text>
+<text x="56" y="40.0" class="tick" text-anchor="end">0.27</text>
+<circle cx="464.6" cy="214.8" r="3.2" class="point"/>
+<circle cx="667.0" cy="217.4" r="3.2" class="point"/>
+<circle cx="689.9" cy="209.2" r="3.2" class="point"/>
+<circle cx="728.8" cy="218.2" r="3.2" class="point"/>
+<circle cx="711.2" cy="211.2" r="3.2" class="point"/>
+<circle cx="302.7" cy="88.1" r="3.2" class="point"/>
+<circle cx="157.3" cy="357.0" r="3.2" class="point"/>
+<circle cx="160.9" cy="360.6" r="3.2" class="point"/>
+<circle cx="300.3" cy="367.0" r="3.2" class="point"/>
+<circle cx="297.9" cy="366.9" r="3.2" class="point"/>
+<circle cx="169.1" cy="361.0" r="3.2" class="point"/>
+<circle cx="135.2" cy="109.7" r="3.2" class="point"/>
+<circle cx="288.1" cy="95.9" r="3.2" class="point"/>
+<circle cx="291.8" cy="366.4" r="3.2" class="point"/>
+<circle cx="290.2" cy="367.8" r="3.2" class="point"/>
+<circle cx="288.9" cy="372.0" r="3.2" class="point"/>
+<circle cx="179.0" cy="355.7" r="3.2" class="point"/>
+<circle cx="145.0" cy="127.0" r="3.2" class="point"/>
+<circle cx="285.1" cy="366.4" r="3.2" class="point"/>
+<circle cx="268.8" cy="129.2" r="3.2" class="point"/>
+<circle cx="144.0" cy="115.6" r="3.2" class="point"/>
+<circle cx="144.3" cy="113.6" r="3.2" class="point"/>
+<circle cx="240.3" cy="149.7" r="3.2" class="point"/>
+<circle cx="279.4" cy="371.6" r="3.2" class="point"/>
+<circle cx="278.8" cy="367.0" r="3.2" class="point"/>
+<circle cx="277.7" cy="366.4" r="3.2" class="point"/>
+<circle cx="270.1" cy="74.7" r="3.2" class="point"/>
+<circle cx="271.3" cy="77.8" r="3.2" class="point"/>
+<circle cx="275.0" cy="363.7" r="3.2" class="point"/>
+<circle cx="192.6" cy="365.5" r="3.2" class="point"/>
+<circle cx="272.0" cy="110.5" r="3.2" class="point"/>
+<circle cx="193.6" cy="361.8" r="3.2" class="point"/>
+<circle cx="272.5" cy="364.5" r="3.2" class="point"/>
+<circle cx="195.1" cy="362.4" r="3.2" class="point"/>
+<circle cx="270.0" cy="83.3" r="3.2" class="point"/>
+<circle cx="272.1" cy="96.7" r="3.2" class="point"/>
+<circle cx="151.5" cy="113.2" r="3.2" class="point"/>
+<circle cx="153.2" cy="119.4" r="3.2" class="point"/>
+<circle cx="161.0" cy="133.1" r="3.2" class="point"/>
+<circle cx="267.9" cy="365.8" r="3.2" class="point"/>
+<circle cx="200.2" cy="363.4" r="3.2" class="point"/>
+<circle cx="156.6" cy="124.2" r="3.2" class="point"/>
+<circle cx="201.3" cy="362.6" r="3.2" class="point"/>
+<circle cx="201.9" cy="364.2" r="3.2" class="point"/>
+<circle cx="202.5" cy="363.2" r="3.2" class="point"/>
+<circle cx="203.1" cy="360.7" r="3.2" class="point"/>
+<circle cx="264.5" cy="367.9" r="3.2" class="point"/>
+<circle cx="263.7" cy="364.2" r="3.2" class="point"/>
+<circle cx="263.3" cy="365.2" r="3.2" class="point"/>
+<circle cx="205.6" cy="363.7" r="3.2" class="point"/>
+<circle cx="262.4" cy="365.9" r="3.2" class="point"/>
+<circle cx="207.8" cy="357.4" r="3.2" class="point"/>
+<circle cx="156.6" cy="114.8" r="3.2" class="point"/>
+<circle cx="264.7" cy="87.9" r="3.2" class="point"/>
+<circle cx="208.4" cy="364.5" r="3.2" class="point"/>
+<circle cx="208.8" cy="361.5" r="3.2" class="point"/>
+<circle cx="265.1" cy="93.7" r="3.2" class="point"/>
+<circle cx="209.8" cy="363.9" r="3.2" class="point"/>
+<circle cx="210.4" cy="362.1" r="3.2" class="point"/>
+<circle cx="258.8" cy="368.7" r="3.2" class="point"/>
+<circle cx="211.5" cy="364.7" r="3.2" class="point"/>
+<circle cx="161.6" cy="123.6" r="3.2" class="point"/>
+<circle cx="212.7" cy="360.9" r="3.2" class="point"/>
+<circle cx="257.2" cy="369.0" r="3.2" class="point"/>
+<circle cx="213.4" cy="364.7" r="3.2" class="point"/>
+<circle cx="256.6" cy="365.8" r="3.2" class="point"/>
+<circle cx="262.3" cy="106.9" r="3.2" class="point"/>
+<circle cx="215.3" cy="366.5" r="3.2" class="point"/>
+<circle cx="160.2" cy="117.3" r="3.2" class="point"/>
+<circle cx="216.0" cy="364.8" r="3.2" class="point"/>
+<circle cx="159.3" cy="110.0" r="3.2" class="point"/>
+<circle cx="217.7" cy="367.0" r="3.2" class="point"/>
+<circle cx="254.0" cy="365.3" r="3.2" class="point"/>
+<circle cx="166.9" cy="128.5" r="3.2" class="point"/>
+<circle cx="253.0" cy="363.5" r="3.2" class="point"/>
+<circle cx="261.5" cy="93.2" r="3.2" class="point"/>
+<circle cx="219.8" cy="365.7" r="3.2" class="point"/>
+<circle cx="220.2" cy="365.0" r="3.2" class="point"/>
+<circle cx="243.8" cy="131.2" r="3.2" class="point"/>
+<circle cx="166.8" cy="127.1" r="3.2" class="point"/>
+<circle cx="251.1" cy="368.5" r="3.2" class="point"/>
+<circle cx="231.4" cy="138.4" r="3.2" class="point"/>
+<circle cx="163.9" cy="121.4" r="3.2" class="point"/>
+<circle cx="223.0" cy="362.9" r="3.2" class="point"/>
+<circle cx="161.3" cy="103.4" r="3.2" class="point"/>
+<circle cx="259.2" cy="108.2" r="3.2" class="point"/>
+<circle cx="249.1" cy="366.9" r="3.2" class="point"/>
+<circle cx="248.6" cy="364.9" r="3.2" class="point"/>
+<circle cx="225.5" cy="365.5" r="3.2" class="point"/>
+<circle cx="225.9" cy="363.4" r="3.2" class="point"/>
+<circle cx="229.8" cy="370.0" r="3.2" class="point"/>
+<circle cx="247.0" cy="367.3" r="3.2" class="point"/>
+<circle cx="246.7" cy="366.7" r="3.2" class="point"/>
+<circle cx="246.0" cy="367.3" r="3.2" class="point"/>
+<circle cx="228.8" cy="365.2" r="3.2" class="point"/>
+<circle cx="245.3" cy="367.0" r="3.2" class="point"/>
+<circle cx="229.6" cy="364.5" r="3.2" class="point"/>
+<circle cx="162.3" cy="106.7" r="3.2" class="point"/>
+<circle cx="244.1" cy="366.9" r="3.2" class="point"/>
+<circle cx="231.9" cy="367.2" r="3.2" class="point"/>
+<circle cx="242.7" cy="368.0" r="3.2" class="point"/>
+<circle cx="243.0" cy="364.8" r="3.2" class="point"/>
+<circle cx="232.3" cy="365.7" r="3.2" class="point"/>
+<circle cx="233.5" cy="366.7" r="3.2" class="point"/>
+<circle cx="234.8" cy="362.4" r="3.2" class="point"/>
+<circle cx="240.1" cy="363.1" r="3.2" class="point"/>
+<circle cx="241.1" cy="364.9" r="3.2" class="point"/>
+<circle cx="235.1" cy="366.5" r="3.2" class="point"/>
+<circle cx="235.1" cy="365.9" r="3.2" class="point"/>
+<circle cx="235.4" cy="365.2" r="3.2" class="point"/>
+<circle cx="236.7" cy="364.1" r="3.2" class="point"/>
+<circle cx="237.4" cy="365.9" r="3.2" class="point"/>
+<circle cx="257.7" cy="91.9" r="3.2" class="point"/>
+<circle cx="181.7" cy="77.3" r="3.2" class="point"/>
+<circle cx="257.4" cy="95.2" r="3.2" class="point"/>
+<circle cx="255.4" cy="89.4" r="3.2" class="point"/>
+<circle cx="256.5" cy="97.1" r="3.2" class="point"/>
+<circle cx="170.8" cy="90.2" r="3.2" class="point"/>
+<circle cx="169.3" cy="121.2" r="3.2" class="point"/>
+<circle cx="253.4" cy="89.5" r="3.2" class="point"/>
+<circle cx="254.2" cy="105.3" r="3.2" class="point"/>
+<circle cx="253.1" cy="108.1" r="3.2" class="point"/>
+<circle cx="249.0" cy="84.3" r="3.2" class="point"/>
+<circle cx="252.0" cy="90.5" r="3.2" class="point"/>
+<circle cx="186.8" cy="133.7" r="3.2" class="point"/>
+<circle cx="238.3" cy="126.6" r="3.2" class="point"/>
+<circle cx="252.6" cy="99.2" r="3.2" class="point"/>
+<circle cx="169.9" cy="100.2" r="3.2" class="point"/>
+<circle cx="251.2" cy="106.0" r="3.2" class="point"/>
+<circle cx="169.8" cy="110.7" r="3.2" class="point"/>
+<circle cx="223.1" cy="72.0" r="3.2" class="point"/>
+<circle cx="251.0" cy="99.3" r="3.2" class="point"/>
+<circle cx="171.5" cy="114.0" r="3.2" class="point"/>
+<circle cx="249.7" cy="94.8" r="3.2" class="point"/>
+<circle cx="249.2" cy="94.2" r="3.2" class="point"/>
+<circle cx="248.4" cy="92.6" r="3.2" class="point"/>
+<circle cx="172.0" cy="108.5" r="3.2" class="point"/>
+<circle cx="202.0" cy="75.1" r="3.2" class="point"/>
+<circle cx="173.4" cy="114.2" r="3.2" class="point"/>
+<circle cx="187.1" cy="129.4" r="3.2" class="point"/>
+<circle cx="173.1" cy="110.5" r="3.2" class="point"/>
+<circle cx="173.2" cy="108.1" r="3.2" class="point"/>
+<circle cx="197.8" cy="77.7" r="3.2" class="point"/>
+<circle cx="246.1" cy="108.1" r="3.2" class="point"/>
+<circle cx="238.3" cy="82.4" r="3.2" class="point"/>
+<circle cx="246.9" cy="99.0" r="3.2" class="point"/>
+<circle cx="174.5" cy="105.6" r="3.2" class="point"/>
+<circle cx="194.6" cy="130.4" r="3.2" class="point"/>
+<circle cx="176.2" cy="114.3" r="3.2" class="point"/>
+<circle cx="241.8" cy="87.7" r="3.2" class="point"/>
+<circle cx="245.1" cy="95.5" r="3.2" class="point"/>
+<circle cx="245.4" cy="100.1" r="3.2" class="point"/>
+<circle cx="185.1" cy="124.4" r="3.2" class="point"/>
+<circle cx="177.0" cy="101.5" r="3.2" class="point"/>
+<circle cx="242.6" cy="110.0" r="3.2" class="point"/>
+<circle cx="193.1" cy="128.0" r="3.2" class="point"/>
+<circle cx="219.5" cy="128.8" r="3.2" class="point"/>
+<circle cx="177.5" cy="109.4" r="3.2" class="point"/>
+<circle cx="185.0" cy="122.4" r="3.2" class="point"/>
+<circle cx="182.0" cy="118.8" r="3.2" class="point"/>
+<circle cx="187.4" cy="123.8" r="3.2" class="point"/>
+<circle cx="242.4" cy="104.8" r="3.2" class="point"/>
+<circle cx="178.7" cy="105.1" r="3.2" class="point"/>
+<circle cx="192.3" cy="85.2" r="3.2" class="point"/>
+<circle cx="241.6" cy="96.4" r="3.2" class="point"/>
+<circle cx="225.6" cy="80.5" r="3.2" class="point"/>
+<circle cx="181.0" cy="99.3" r="3.2" class="point"/>
+<circle cx="180.5" cy="112.0" r="3.2" class="point"/>
+<circle cx="239.5" cy="93.1" r="3.2" class="point"/>
+<circle cx="180.2" cy="106.1" r="3.2" class="point"/>
+<circle cx="187.8" cy="121.5" r="3.2" class="point"/>
+<circle cx="182.2" cy="114.0" r="3.2" class="point"/>
+<circle cx="180.8" cy="107.8" r="3.2" class="point"/>
+<circle cx="187.0" cy="119.9" r="3.2" class="point"/>
+<circle cx="237.7" cy="110.2" r="3.2" class="point"/>
+<circle cx="211.5" cy="80.5" r="3.2" class="point"/>
+<circle cx="205.1" cy="81.8" r="3.2" class="point"/>
+<circle cx="182.0" cy="105.3" r="3.2" class="point"/>
+<circle cx="238.3" cy="106.7" r="3.2" class="point"/>
+<circle cx="238.3" cy="105.9" r="3.2" class="point"/>
+<circle cx="214.6" cy="125.7" r="3.2" class="point"/>
+<circle cx="182.8" cy="105.5" r="3.2" class="point"/>
+<circle cx="237.7" cy="96.9" r="3.2" class="point"/>
+<circle cx="222.3" cy="82.8" r="3.2" class="point"/>
+<circle cx="183.8" cy="109.7" r="3.2" class="point"/>
+<circle cx="204.5" cy="83.5" r="3.2" class="point"/>
+<circle cx="237.5" cy="101.5" r="3.2" class="point"/>
+<circle cx="211.7" cy="125.0" r="3.2" class="point"/>
+<circle cx="232.0" cy="89.4" r="3.2" class="point"/>
+<circle cx="184.6" cy="104.6" r="3.2" class="point"/>
+<circle cx="236.6" cy="100.0" r="3.2" class="point"/>
+<circle cx="198.8" cy="86.9" r="3.2" class="point"/>
+<circle cx="185.2" cy="108.5" r="3.2" class="point"/>
+<circle cx="225.5" cy="85.9" r="3.2" class="point"/>
+<circle cx="186.9" cy="112.5" r="3.2" class="point"/>
+<circle cx="186.5" cy="101.1" r="3.2" class="point"/>
+<circle cx="201.8" cy="86.1" r="3.2" class="point"/>
+<circle cx="221.0" cy="121.1" r="3.2" class="point"/>
+<circle cx="201.4" cy="86.6" r="3.2" class="point"/>
+<circle cx="227.6" cy="88.1" r="3.2" class="point"/>
+<circle cx="197.1" cy="89.4" r="3.2" class="point"/>
+<circle cx="234.3" cy="98.2" r="3.2" class="point"/>
+<circle cx="194.6" cy="118.9" r="3.2" class="point"/>
+<circle cx="210.9" cy="122.6" r="3.2" class="point"/>
+<circle cx="193.1" cy="93.6" r="3.2" class="point"/>
+<circle cx="188.7" cy="111.3" r="3.2" class="point"/>
+<circle cx="204.1" cy="86.9" r="3.2" class="point"/>
+<circle cx="230.7" cy="111.0" r="3.2" class="point"/>
+<circle cx="188.2" cy="106.9" r="3.2" class="point"/>
+<circle cx="210.2" cy="121.8" r="3.2" class="point"/>
+<circle cx="191.6" cy="96.8" r="3.2" class="point"/>
+<circle cx="232.9" cy="101.0" r="3.2" class="point"/>
+<circle cx="188.9" cy="105.3" r="3.2" class="point"/>
+<circle cx="232.6" cy="102.1" r="3.2" class="point"/>
+<circle cx="222.1" cy="117.7" r="3.2" class="point"/>
+<circle cx="195.0" cy="116.5" r="3.2" class="point"/>
+<circle cx="229.8" cy="94.5" r="3.2" class="point"/>
+<circle cx="228.0" cy="92.5" r="3.2" class="point"/>
+<circle cx="224.0" cy="115.8" r="3.2" class="point"/>
+<circle cx="227.9" cy="111.8" r="3.2" class="point"/>
+<circle cx="230.3" cy="97.0" r="3.2" class="point"/>
+<circle cx="199.3" cy="118.0" r="3.2" class="point"/>
+<circle cx="230.8" cy="104.7" r="3.2" class="point"/>
+<circle cx="223.1" cy="115.5" r="3.2" class="point"/>
+<circle cx="217.6" cy="118.2" r="3.2" class="point"/>
+<circle cx="200.7" cy="91.4" r="3.2" class="point"/>
+<circle cx="219.1" cy="117.3" r="3.2" class="point"/>
+<circle cx="192.9" cy="110.4" r="3.2" class="point"/>
+<circle cx="199.6" cy="92.7" r="3.2" class="point"/>
+<circle cx="229.3" cy="99.3" r="3.2" class="point"/>
+<circle cx="229.3" cy="104.1" r="3.2" class="point"/>
+<circle cx="193.0" cy="102.6" r="3.2" class="point"/>
+<circle cx="219.0" cy="89.9" r="3.2" class="point"/>
+<circle cx="194.6" cy="110.9" r="3.2" class="point"/>
+<circle cx="214.2" cy="89.3" r="3.2" class="point"/>
+<circle cx="223.0" cy="113.2" r="3.2" class="point"/>
+<circle cx="219.3" cy="90.6" r="3.2" class="point"/>
+<circle cx="226.6" cy="96.5" r="3.2" class="point"/>
+<circle cx="218.8" cy="115.4" r="3.2" class="point"/>
+<circle cx="225.1" cy="95.0" r="3.2" class="point"/>
+<circle cx="201.9" cy="93.4" r="3.2" class="point"/>
+<circle cx="215.5" cy="116.3" r="3.2" class="point"/>
+<circle cx="195.0" cy="103.2" r="3.2" class="point"/>
+<circle cx="227.0" cy="101.3" r="3.2" class="point"/>
+<circle cx="221.1" cy="92.9" r="3.2" class="point"/>
+<circle cx="209.0" cy="91.3" r="3.2" class="point"/>
+<circle cx="226.4" cy="104.1" r="3.2" class="point"/>
+<circle cx="226.3" cy="103.3" r="3.2" class="point"/>
+<circle cx="198.1" cy="98.7" r="3.2" class="point"/>
+<circle cx="212.8" cy="91.5" r="3.2" class="point"/>
+<circle cx="224.5" cy="107.5" r="3.2" class="point"/>
+<circle cx="218.8" cy="113.2" r="3.2" class="point"/>
+<circle cx="203.7" cy="94.6" r="3.2" class="point"/>
+<circle cx="202.3" cy="113.3" r="3.2" class="point"/>
+<circle cx="204.6" cy="94.3" r="3.2" class="point"/>
+<circle cx="197.3" cy="105.0" r="3.2" class="point"/>
+<circle cx="207.9" cy="93.3" r="3.2" class="point"/>
+<circle cx="210.2" cy="114.6" r="3.2" class="point"/>
+<circle cx="199.9" cy="110.2" r="3.2" class="point"/>
+<circle cx="204.1" cy="113.0" r="3.2" class="point"/>
+<circle cx="221.8" cy="97.0" r="3.2" class="point"/>
+<circle cx="218.6" cy="94.7" r="3.2" class="point"/>
+<circle cx="222.4" cy="107.2" r="3.2" class="point"/>
+<circle cx="221.6" cy="97.5" r="3.2" class="point"/>
+<circle cx="209.5" cy="94.0" r="3.2" class="point"/>
+<circle cx="210.1" cy="113.4" r="3.2" class="point"/>
+<circle cx="203.7" cy="97.0" r="3.2" class="point"/>
+<circle cx="215.0" cy="94.4" r="3.2" class="point"/>
+<circle cx="200.0" cy="102.9" r="3.2" class="point"/>
+<circle cx="211.4" cy="94.5" r="3.2" class="point"/>
+<circle cx="200.3" cy="103.6" r="3.2" class="point"/>
+<circle cx="217.2" cy="95.9" r="3.2" class="point"/>
+<circle cx="221.5" cy="100.9" r="3.2" class="point"/>
+<circle cx="219.1" cy="108.4" r="3.2" class="point"/>
+<circle cx="221.2" cy="101.6" r="3.2" class="point"/>
+<circle cx="205.1" cy="97.9" r="3.2" class="point"/>
+<circle cx="202.0" cy="102.1" r="3.2" class="point"/>
+<circle cx="205.5" cy="98.1" r="3.2" class="point"/>
+<circle cx="214.8" cy="96.4" r="3.2" class="point"/>
+<circle cx="203.5" cy="100.7" r="3.2" class="point"/>
+<circle cx="209.7" cy="96.8" r="3.2" class="point"/>
+<circle cx="218.2" cy="99.0" r="3.2" class="point"/>
+<circle cx="219.6" cy="102.7" r="3.2" class="point"/>
+<circle cx="207.4" cy="98.3" r="3.2" class="point"/>
+<circle cx="218.4" cy="100.6" r="3.2" class="point"/>
+<circle cx="213.3" cy="109.5" r="3.2" class="point"/>
+<circle cx="214.0" cy="109.0" r="3.2" class="point"/>
+<circle cx="213.8" cy="98.1" r="3.2" class="point"/>
+<circle cx="207.6" cy="108.5" r="3.2" class="point"/>
+<circle cx="210.0" cy="108.8" r="3.2" class="point"/>
+<circle cx="206.8" cy="107.3" r="3.2" class="point"/>
+<circle cx="206.0" cy="105.7" r="3.2" class="point"/>
+<circle cx="216.1" cy="105.1" r="3.2" class="point"/>
+<circle cx="206.5" cy="104.1" r="3.2" class="point"/>
+<circle cx="208.4" cy="101.3" r="3.2" class="point"/>
+<circle cx="207.9" cy="102.4" r="3.2" class="point"/>
+<circle cx="208.6" cy="102.4" r="3.2" class="point"/>
+<circle cx="209.5" cy="102.3" r="3.2" class="point"/>
+<circle cx="212.0" cy="102.3" r="3.2" class="point"/>
+<line x1="202.1" y1="103.5" x2="220.1" y2="103.5" class="cross"/>
+<line x1="211.1" y1="94.5" x2="211.1" y2="112.5" class="cross"/>
+<text x="223.1" y="95.5" class="best-label" text-anchor="start">tree 8816</text>
+<text x="432.0" y="452" class="axis-label" text-anchor="middle">Clustering index</text>
+<text x="18" y="222.0" class="axis-label" text-anchor="middle" transform="rotate(-90 18 222.0)">BI / (BI + LI)</text>
+</svg>
+<svg viewBox="0 0 820 280" role="img">
+<title>Cancer populations (300 trees)</title>
+<text x="58" y="22" class="chart-title">Cancer populations (300 trees)</text>
+<line x1="58" y1="234.0" x2="804" y2="234.0" class="grid"/>
+<text x="50" y="238.0" class="tick" text-anchor="end">0</text>
+<line x1="58" y1="184.5" x2="804" y2="184.5" class="grid"/>
+<text x="50" y="188.5" class="tick" text-anchor="end">75</text>
+<line x1="58" y1="135.0" x2="804" y2="135.0" class="grid"/>
+<text x="50" y="139.0" class="tick" text-anchor="end">150</text>
+<line x1="58" y1="85.5" x2="804" y2="85.5" class="grid"/>
+<text x="50" y="89.5" class="tick" text-anchor="end">225</text>
+<line x1="58" y1="36.0" x2="804" y2="36.0" class="grid"/>
+<text x="50" y="40.0" class="tick" text-anchor="end">300</text>
+<rect x="395.0" y="36.0" width="72.0" height="198.0" fill="#1f4e79"/>
+<text x="431.0" y="252" class="tick" text-anchor="middle">4</text>
+<line x1="58" y1="36" x2="58" y2="234" class="axis"/>
+<line x1="58" y1="234" x2="804" y2="234" class="axis"/>
+<text x="431.0" y="274" class="axis-label" text-anchor="middle">Populations</text>
+<text x="16" y="135.0" class="axis-label" text-anchor="middle" transform="rotate(-90 16 135.0)">Trees</text>
+</svg>
+</section>
+
+<section>
+<h2>Cellular prevalence</h2>
+<p class="note">For each tree, populations are ordered by cellular prevalence. The normal root is left out. These are the next three.</p>
+<svg viewBox="0 0 820 280" role="img">
+<title>Cellular prevalence, cancer population 1 (300 trees)</title>
+<text x="58" y="22" class="chart-title">Cellular prevalence, cancer population 1 (300 trees)</text>
+<line x1="58" y1="234.0" x2="804" y2="234.0" class="grid"/>
+<text x="50" y="238.0" class="tick" text-anchor="end">0</text>
+<line x1="58" y1="184.5" x2="804" y2="184.5" class="grid"/>
+<text x="50" y="188.5" class="tick" text-anchor="end">74</text>
+<line x1="58" y1="135.0" x2="804" y2="135.0" class="grid"/>
+<text x="50" y="139.0" class="tick" text-anchor="end">148</text>
+<line x1="58" y1="85.5" x2="804" y2="85.5" class="grid"/>
+<text x="50" y="89.5" class="tick" text-anchor="end">221</text>
+<line x1="58" y1="36.0" x2="804" y2="36.0" class="grid"/>
+<text x="50" y="40.0" class="tick" text-anchor="end">295</text>
+<rect x="59.0" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="96.3" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="133.6" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="170.9" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="208.2" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="245.5" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="282.8" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="320.1" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="357.4" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="394.7" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="432.0" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="469.3" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="506.6" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="543.9" y="231.3" width="35.3" height="2.7" fill="#1f4e79"/>
+<rect x="581.2" y="233.3" width="35.3" height="0.7" fill="#1f4e79"/>
+<rect x="618.5" y="36.0" width="35.3" height="198.0" fill="#1f4e79"/>
+<rect x="655.8" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="693.1" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="730.4" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="767.7" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<line x1="58" y1="36" x2="58" y2="234" class="axis"/>
+<line x1="58" y1="234" x2="804" y2="234" class="axis"/>
+<text x="58.0" y="252" class="tick" text-anchor="middle">0.00</text>
+<text x="431.0" y="252" class="tick" text-anchor="middle">0.50</text>
+<text x="804.0" y="252" class="tick" text-anchor="middle">1.00</text>
+<text x="431.0" y="274" class="axis-label" text-anchor="middle">Cellular prevalence</text>
+<text x="16" y="135.0" class="axis-label" text-anchor="middle" transform="rotate(-90 16 135.0)">Trees</text>
+</svg><svg viewBox="0 0 820 280" role="img">
+<title>Cellular prevalence, cancer population 2 (300 trees)</title>
+<text x="58" y="22" class="chart-title">Cellular prevalence, cancer population 2 (300 trees)</text>
+<line x1="58" y1="234.0" x2="804" y2="234.0" class="grid"/>
+<text x="50" y="238.0" class="tick" text-anchor="end">0</text>
+<line x1="58" y1="184.5" x2="804" y2="184.5" class="grid"/>
+<text x="50" y="188.5" class="tick" text-anchor="end">74</text>
+<line x1="58" y1="135.0" x2="804" y2="135.0" class="grid"/>
+<text x="50" y="139.0" class="tick" text-anchor="end">148</text>
+<line x1="58" y1="85.5" x2="804" y2="85.5" class="grid"/>
+<text x="50" y="89.5" class="tick" text-anchor="end">221</text>
+<line x1="58" y1="36.0" x2="804" y2="36.0" class="grid"/>
+<text x="50" y="40.0" class="tick" text-anchor="end">295</text>
+<rect x="59.0" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="96.3" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="133.6" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="170.9" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="208.2" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="245.5" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="282.8" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="320.1" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="357.4" y="231.3" width="35.3" height="2.7" fill="#1f4e79"/>
+<rect x="394.7" y="233.3" width="35.3" height="0.7" fill="#1f4e79"/>
+<rect x="432.0" y="36.0" width="35.3" height="198.0" fill="#1f4e79"/>
+<rect x="469.3" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="506.6" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="543.9" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="581.2" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="618.5" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="655.8" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="693.1" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="730.4" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="767.7" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<line x1="58" y1="36" x2="58" y2="234" class="axis"/>
+<line x1="58" y1="234" x2="804" y2="234" class="axis"/>
+<text x="58.0" y="252" class="tick" text-anchor="middle">0.00</text>
+<text x="431.0" y="252" class="tick" text-anchor="middle">0.50</text>
+<text x="804.0" y="252" class="tick" text-anchor="middle">1.00</text>
+<text x="431.0" y="274" class="axis-label" text-anchor="middle">Cellular prevalence</text>
+<text x="16" y="135.0" class="axis-label" text-anchor="middle" transform="rotate(-90 16 135.0)">Trees</text>
+</svg><svg viewBox="0 0 820 280" role="img">
+<title>Cellular prevalence, cancer population 3 (300 trees)</title>
+<text x="58" y="22" class="chart-title">Cellular prevalence, cancer population 3 (300 trees)</text>
+<line x1="58" y1="234.0" x2="804" y2="234.0" class="grid"/>
+<text x="50" y="238.0" class="tick" text-anchor="end">0</text>
+<line x1="58" y1="184.5" x2="804" y2="184.5" class="grid"/>
+<text x="50" y="188.5" class="tick" text-anchor="end">74</text>
+<line x1="58" y1="135.0" x2="804" y2="135.0" class="grid"/>
+<text x="50" y="139.0" class="tick" text-anchor="end">148</text>
+<line x1="58" y1="85.5" x2="804" y2="85.5" class="grid"/>
+<text x="50" y="89.5" class="tick" text-anchor="end">223</text>
+<line x1="58" y1="36.0" x2="804" y2="36.0" class="grid"/>
+<text x="50" y="40.0" class="tick" text-anchor="end">297</text>
+<rect x="59.0" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="96.3" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="133.6" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="170.9" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="208.2" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="245.5" y="232.0" width="35.3" height="2.0" fill="#1f4e79"/>
+<rect x="282.8" y="36.0" width="35.3" height="198.0" fill="#1f4e79"/>
+<rect x="320.1" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="357.4" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="394.7" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="432.0" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="469.3" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="506.6" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="543.9" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="581.2" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="618.5" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="655.8" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="693.1" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="730.4" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="767.7" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<line x1="58" y1="36" x2="58" y2="234" class="axis"/>
+<line x1="58" y1="234" x2="804" y2="234" class="axis"/>
+<text x="58.0" y="252" class="tick" text-anchor="middle">0.00</text>
+<text x="431.0" y="252" class="tick" text-anchor="middle">0.50</text>
+<text x="804.0" y="252" class="tick" text-anchor="middle">1.00</text>
+<text x="431.0" y="274" class="axis-label" text-anchor="middle">Cellular prevalence</text>
+<text x="16" y="135.0" class="axis-label" text-anchor="middle" transform="rotate(-90 16 135.0)">Trees</text>
+</svg>
+</section>
+
+<section>
+<h2>Tree 8816</h2>
+<p class="note">Population 0 is the normal root and has no SSMs. Labels are cellular prevalence, then SSM and CNV counts. The VAF plots below are the cancer populations.</p>
+<svg viewBox="0 0 820 640" role="img">
+<title>Posterior mode tree</title>
+<line x1="410.0" y1="84.0" x2="410.0" y2="158.0" class="edge"/>
+<line x1="410.0" y1="214.0" x2="300.0" y2="288.0" class="edge"/>
+<line x1="410.0" y1="214.0" x2="520.0" y2="288.0" class="edge"/>
+<line x1="300.0" y1="344.0" x2="300.0" y2="418.0" class="edge"/>
+<rect x="238.0" y="416.0" width="124" height="60" rx="8" fill="#2f6f4e"/>
+<text x="300.0" y="438.0" class="node-title" text-anchor="middle">pop 3</text>
+<text x="300.0" y="456.0" class="node-detail" text-anchor="middle">0.324</text>
+<text x="300.0" y="470.0" class="node-detail" text-anchor="middle">1142 SSM, 0 CNV</text>
+<rect x="238.0" y="286.0" width="124" height="60" rx="8" fill="#c47b2b"/>
+<text x="300.0" y="308.0" class="node-title" text-anchor="middle">pop 2</text>
+<text x="300.0" y="326.0" class="node-detail" text-anchor="middle">0.529</text>
+<text x="300.0" y="340.0" class="node-detail" text-anchor="middle">5221 SSM, 2 CNV</text>
+<rect x="458.0" y="286.0" width="124" height="60" rx="8" fill="#8c3a4b"/>
+<text x="520.0" y="308.0" class="node-title" text-anchor="middle">pop 4</text>
+<text x="520.0" y="326.0" class="node-detail" text-anchor="middle">0.183</text>
+<text x="520.0" y="340.0" class="node-detail" text-anchor="middle">1336 SSM, 2 CNV</text>
+<rect x="348.0" y="156.0" width="124" height="60" rx="8" fill="#1f4e79"/>
+<text x="410.0" y="178.0" class="node-title" text-anchor="middle">pop 1</text>
+<text x="410.0" y="196.0" class="node-detail" text-anchor="middle">0.773</text>
+<text x="410.0" y="210.0" class="node-detail" text-anchor="middle">3052 SSM, 10 CNV</text>
+<rect x="348.0" y="26.0" width="124" height="60" rx="8" fill="#57534e"/>
+<text x="410.0" y="48.0" class="node-title" text-anchor="middle">normal</text>
+<text x="410.0" y="66.0" class="node-detail" text-anchor="middle">1.000</text>
+<text x="410.0" y="80.0" class="node-detail" text-anchor="middle">0 SSM, 0 CNV</text>
+</svg>
+<table>
+<thead><tr><th>Population</th><th>Cellular prevalence</th><th>SSMs</th><th>CNVs</th></tr></thead>
+<tbody>
+<tr><td>normal</td><td>1.000</td><td>0</td><td>0</td></tr><tr><td>1</td><td>0.773</td><td>3052</td><td>10</td></tr><tr><td>2</td><td>0.529</td><td>5221</td><td>2</td></tr><tr><td>3</td><td>0.324</td><td>1142</td><td>0</td></tr><tr><td>4</td><td>0.183</td><td>1336</td><td>2</td></tr>
+</tbody>
+</table>
+</section>
+
+<section><h2>Population 1</h2><svg viewBox="0 0 820 280" role="img">
+<title>Population 1 VAF (3052 SSMs)</title>
+<text x="58" y="22" class="chart-title">Population 1 VAF (3052 SSMs)</text>
+<line x1="58" y1="234.0" x2="804" y2="234.0" class="grid"/>
+<text x="50" y="238.0" class="tick" text-anchor="end">0</text>
+<line x1="58" y1="184.5" x2="804" y2="184.5" class="grid"/>
+<text x="50" y="188.5" class="tick" text-anchor="end">210</text>
+<line x1="58" y1="135.0" x2="804" y2="135.0" class="grid"/>
+<text x="50" y="139.0" class="tick" text-anchor="end">419</text>
+<line x1="58" y1="85.5" x2="804" y2="85.5" class="grid"/>
+<text x="50" y="89.5" class="tick" text-anchor="end">628</text>
+<line x1="58" y1="36.0" x2="804" y2="36.0" class="grid"/>
+<text x="50" y="40.0" class="tick" text-anchor="end">838</text>
+<rect x="59.0" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="96.3" y="229.5" width="35.3" height="4.5" fill="#1f4e79"/>
+<rect x="133.6" y="216.8" width="35.3" height="17.2" fill="#1f4e79"/>
+<rect x="170.9" y="211.1" width="35.3" height="22.9" fill="#1f4e79"/>
+<rect x="208.2" y="211.3" width="35.3" height="22.7" fill="#1f4e79"/>
+<rect x="245.5" y="193.1" width="35.3" height="40.9" fill="#1f4e79"/>
+<rect x="282.8" y="111.6" width="35.3" height="122.4" fill="#1f4e79"/>
+<rect x="320.1" y="36.0" width="35.3" height="198.0" fill="#1f4e79"/>
+<rect x="357.4" y="104.3" width="35.3" height="129.7" fill="#1f4e79"/>
+<rect x="394.7" y="194.8" width="35.3" height="39.2" fill="#1f4e79"/>
+<rect x="432.0" y="198.6" width="35.3" height="35.4" fill="#1f4e79"/>
+<rect x="469.3" y="192.9" width="35.3" height="41.1" fill="#1f4e79"/>
+<rect x="506.6" y="203.8" width="35.3" height="30.2" fill="#1f4e79"/>
+<rect x="543.9" y="221.0" width="35.3" height="13.0" fill="#1f4e79"/>
+<rect x="581.2" y="231.6" width="35.3" height="2.4" fill="#1f4e79"/>
+<rect x="618.5" y="233.1" width="35.3" height="0.9" fill="#1f4e79"/>
+<rect x="655.8" y="233.5" width="35.3" height="0.5" fill="#1f4e79"/>
+<rect x="693.1" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="730.4" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<rect x="767.7" y="234.0" width="35.3" height="0.0" fill="#1f4e79"/>
+<line x1="58" y1="36" x2="58" y2="234" class="axis"/>
+<line x1="58" y1="234" x2="804" y2="234" class="axis"/>
+<text x="58.0" y="252" class="tick" text-anchor="middle">0.00</text>
+<text x="431.0" y="252" class="tick" text-anchor="middle">0.50</text>
+<text x="804.0" y="252" class="tick" text-anchor="middle">1.00</text>
+<text x="431.0" y="274" class="axis-label" text-anchor="middle">VAF</text>
+<text x="16" y="135.0" class="axis-label" text-anchor="middle" transform="rotate(-90 16 135.0)">SSMs</text>
+</svg></section><section><h2>Population 2</h2><svg viewBox="0 0 820 280" role="img">
+<title>Population 2 VAF (5221 SSMs)</title>
+<text x="58" y="22" class="chart-title">Population 2 VAF (5221 SSMs)</text>
+<line x1="58" y1="234.0" x2="804" y2="234.0" class="grid"/>
+<text x="50" y="238.0" class="tick" text-anchor="end">0</text>
+<line x1="58" y1="184.5" x2="804" y2="184.5" class="grid"/>
+<text x="50" y="188.5" class="tick" text-anchor="end">360</text>
+<line x1="58" y1="135.0" x2="804" y2="135.0" class="grid"/>
+<text x="50" y="139.0" class="tick" text-anchor="end">720</text>
+<line x1="58" y1="85.5" x2="804" y2="85.5" class="grid"/>
+<text x="50" y="89.5" class="tick" text-anchor="end">1079</text>
+<line x1="58" y1="36.0" x2="804" y2="36.0" class="grid"/>
+<text x="50" y="40.0" class="tick" text-anchor="end">1439</text>
+<rect x="59.0" y="234.0" width="35.3" height="0.0" fill="#c47b2b"/>
+<rect x="96.3" y="233.9" width="35.3" height="0.1" fill="#c47b2b"/>
+<rect x="133.6" y="224.5" width="35.3" height="9.5" fill="#c47b2b"/>
+<rect x="170.9" y="183.1" width="35.3" height="50.9" fill="#c47b2b"/>
+<rect x="208.2" y="95.9" width="35.3" height="138.1" fill="#c47b2b"/>
+<rect x="245.5" y="36.0" width="35.3" height="198.0" fill="#c47b2b"/>
+<rect x="282.8" y="93.4" width="35.3" height="140.6" fill="#c47b2b"/>
+<rect x="320.1" y="175.5" width="35.3" height="58.5" fill="#c47b2b"/>
+<rect x="357.4" y="197.3" width="35.3" height="36.7" fill="#c47b2b"/>
+<rect x="394.7" y="200.7" width="35.3" height="33.3" fill="#c47b2b"/>
+<rect x="432.0" y="197.1" width="35.3" height="36.9" fill="#c47b2b"/>
+<rect x="469.3" y="221.3" width="35.3" height="12.7" fill="#c47b2b"/>
+<rect x="506.6" y="231.4" width="35.3" height="2.6" fill="#c47b2b"/>
+<rect x="543.9" y="233.6" width="35.3" height="0.4" fill="#c47b2b"/>
+<rect x="581.2" y="234.0" width="35.3" height="0.0" fill="#c47b2b"/>
+<rect x="618.5" y="234.0" width="35.3" height="0.0" fill="#c47b2b"/>
+<rect x="655.8" y="234.0" width="35.3" height="0.0" fill="#c47b2b"/>
+<rect x="693.1" y="234.0" width="35.3" height="0.0" fill="#c47b2b"/>
+<rect x="730.4" y="234.0" width="35.3" height="0.0" fill="#c47b2b"/>
+<rect x="767.7" y="234.0" width="35.3" height="0.0" fill="#c47b2b"/>
+<line x1="58" y1="36" x2="58" y2="234" class="axis"/>
+<line x1="58" y1="234" x2="804" y2="234" class="axis"/>
+<text x="58.0" y="252" class="tick" text-anchor="middle">0.00</text>
+<text x="431.0" y="252" class="tick" text-anchor="middle">0.50</text>
+<text x="804.0" y="252" class="tick" text-anchor="middle">1.00</text>
+<text x="431.0" y="274" class="axis-label" text-anchor="middle">VAF</text>
+<text x="16" y="135.0" class="axis-label" text-anchor="middle" transform="rotate(-90 16 135.0)">SSMs</text>
+</svg></section><section><h2>Population 3</h2><svg viewBox="0 0 820 280" role="img">
+<title>Population 3 VAF (1142 SSMs)</title>
+<text x="58" y="22" class="chart-title">Population 3 VAF (1142 SSMs)</text>
+<line x1="58" y1="234.0" x2="804" y2="234.0" class="grid"/>
+<text x="50" y="238.0" class="tick" text-anchor="end">0</text>
+<line x1="58" y1="184.5" x2="804" y2="184.5" class="grid"/>
+<text x="50" y="188.5" class="tick" text-anchor="end">88</text>
+<line x1="58" y1="135.0" x2="804" y2="135.0" class="grid"/>
+<text x="50" y="139.0" class="tick" text-anchor="end">176</text>
+<line x1="58" y1="85.5" x2="804" y2="85.5" class="grid"/>
+<text x="50" y="89.5" class="tick" text-anchor="end">265</text>
+<line x1="58" y1="36.0" x2="804" y2="36.0" class="grid"/>
+<text x="50" y="40.0" class="tick" text-anchor="end">353</text>
+<rect x="59.0" y="234.0" width="35.3" height="0.0" fill="#2f6f4e"/>
+<rect x="96.3" y="194.7" width="35.3" height="39.3" fill="#2f6f4e"/>
+<rect x="133.6" y="89.8" width="35.3" height="144.2" fill="#2f6f4e"/>
+<rect x="170.9" y="36.0" width="35.3" height="198.0" fill="#2f6f4e"/>
+<rect x="208.2" y="76.9" width="35.3" height="157.1" fill="#2f6f4e"/>
+<rect x="245.5" y="161.6" width="35.3" height="72.4" fill="#2f6f4e"/>
+<rect x="282.8" y="213.8" width="35.3" height="20.2" fill="#2f6f4e"/>
+<rect x="320.1" y="229.5" width="35.3" height="4.5" fill="#2f6f4e"/>
+<rect x="357.4" y="229.5" width="35.3" height="4.5" fill="#2f6f4e"/>
+<rect x="394.7" y="233.4" width="35.3" height="0.6" fill="#2f6f4e"/>
+<rect x="432.0" y="234.0" width="35.3" height="0.0" fill="#2f6f4e"/>
+<rect x="469.3" y="234.0" width="35.3" height="0.0" fill="#2f6f4e"/>
+<rect x="506.6" y="234.0" width="35.3" height="0.0" fill="#2f6f4e"/>
+<rect x="543.9" y="234.0" width="35.3" height="0.0" fill="#2f6f4e"/>
+<rect x="581.2" y="234.0" width="35.3" height="0.0" fill="#2f6f4e"/>
+<rect x="618.5" y="234.0" width="35.3" height="0.0" fill="#2f6f4e"/>
+<rect x="655.8" y="234.0" width="35.3" height="0.0" fill="#2f6f4e"/>
+<rect x="693.1" y="234.0" width="35.3" height="0.0" fill="#2f6f4e"/>
+<rect x="730.4" y="234.0" width="35.3" height="0.0" fill="#2f6f4e"/>
+<rect x="767.7" y="234.0" width="35.3" height="0.0" fill="#2f6f4e"/>
+<line x1="58" y1="36" x2="58" y2="234" class="axis"/>
+<line x1="58" y1="234" x2="804" y2="234" class="axis"/>
+<text x="58.0" y="252" class="tick" text-anchor="middle">0.00</text>
+<text x="431.0" y="252" class="tick" text-anchor="middle">0.50</text>
+<text x="804.0" y="252" class="tick" text-anchor="middle">1.00</text>
+<text x="431.0" y="274" class="axis-label" text-anchor="middle">VAF</text>
+<text x="16" y="135.0" class="axis-label" text-anchor="middle" transform="rotate(-90 16 135.0)">SSMs</text>
+</svg></section><section><h2>Population 4</h2><svg viewBox="0 0 820 280" role="img">
+<title>Population 4 VAF (1336 SSMs)</title>
+<text x="58" y="22" class="chart-title">Population 4 VAF (1336 SSMs)</text>
+<line x1="58" y1="234.0" x2="804" y2="234.0" class="grid"/>
+<text x="50" y="238.0" class="tick" text-anchor="end">0</text>
+<line x1="58" y1="184.5" x2="804" y2="184.5" class="grid"/>
+<text x="50" y="188.5" class="tick" text-anchor="end">165</text>
+<line x1="58" y1="135.0" x2="804" y2="135.0" class="grid"/>
+<text x="50" y="139.0" class="tick" text-anchor="end">330</text>
+<line x1="58" y1="85.5" x2="804" y2="85.5" class="grid"/>
+<text x="50" y="89.5" class="tick" text-anchor="end">494</text>
+<line x1="58" y1="36.0" x2="804" y2="36.0" class="grid"/>
+<text x="50" y="40.0" class="tick" text-anchor="end">659</text>
+<rect x="59.0" y="233.7" width="35.3" height="0.3" fill="#8c3a4b"/>
+<rect x="96.3" y="36.0" width="35.3" height="198.0" fill="#8c3a4b"/>
+<rect x="133.6" y="91.0" width="35.3" height="143.0" fill="#8c3a4b"/>
+<rect x="170.9" y="187.1" width="35.3" height="46.9" fill="#8c3a4b"/>
+<rect x="208.2" y="225.0" width="35.3" height="9.0" fill="#8c3a4b"/>
+<rect x="245.5" y="231.0" width="35.3" height="3.0" fill="#8c3a4b"/>
+<rect x="282.8" y="233.1" width="35.3" height="0.9" fill="#8c3a4b"/>
+<rect x="320.1" y="233.7" width="35.3" height="0.3" fill="#8c3a4b"/>
+<rect x="357.4" y="234.0" width="35.3" height="0.0" fill="#8c3a4b"/>
+<rect x="394.7" y="234.0" width="35.3" height="0.0" fill="#8c3a4b"/>
+<rect x="432.0" y="234.0" width="35.3" height="0.0" fill="#8c3a4b"/>
+<rect x="469.3" y="234.0" width="35.3" height="0.0" fill="#8c3a4b"/>
+<rect x="506.6" y="234.0" width="35.3" height="0.0" fill="#8c3a4b"/>
+<rect x="543.9" y="234.0" width="35.3" height="0.0" fill="#8c3a4b"/>
+<rect x="581.2" y="234.0" width="35.3" height="0.0" fill="#8c3a4b"/>
+<rect x="618.5" y="234.0" width="35.3" height="0.0" fill="#8c3a4b"/>
+<rect x="655.8" y="234.0" width="35.3" height="0.0" fill="#8c3a4b"/>
+<rect x="693.1" y="234.0" width="35.3" height="0.0" fill="#8c3a4b"/>
+<rect x="730.4" y="234.0" width="35.3" height="0.0" fill="#8c3a4b"/>
+<rect x="767.7" y="234.0" width="35.3" height="0.0" fill="#8c3a4b"/>
+<line x1="58" y1="36" x2="58" y2="234" class="axis"/>
+<line x1="58" y1="234" x2="804" y2="234" class="axis"/>
+<text x="58.0" y="252" class="tick" text-anchor="middle">0.00</text>
+<text x="431.0" y="252" class="tick" text-anchor="middle">0.50</text>
+<text x="804.0" y="252" class="tick" text-anchor="middle">1.00</text>
+<text x="431.0" y="274" class="axis-label" text-anchor="middle">VAF</text>
+<text x="16" y="135.0" class="axis-label" text-anchor="middle" transform="rotate(-90 16 135.0)">SSMs</text>
+</svg></section>
+</main>
+</body>
+</html>
