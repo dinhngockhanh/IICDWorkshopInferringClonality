@@ -8,6 +8,8 @@ CLUSTERS=10
 DENSITY="binomial"
 # Independent restarts. The best restart is kept.
 RESTARTS=10
+# Fixes the restart initialisation. The same value is used by the other tools.
+SEED=1001
 
 ###======================== Paths =======================================
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
@@ -40,7 +42,8 @@ SECONDS=0
     -o "$output_dir/${SAMPLE_ID}.h5" \
     -c "$CLUSTERS" \
     -d "$DENSITY" \
-    -r "$RESTARTS"
+    -r "$RESTARTS" \
+    --seed "$SEED"
 "$PYCLONE_VI" write-results-file \
     -i "$output_dir/${SAMPLE_ID}.h5" \
     -o "$output_dir/${SAMPLE_ID}_results.tsv"
@@ -49,6 +52,7 @@ end=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 ###======================== Save runtime ================================
 cat > "$output_dir/runtime.txt" <<EOF
 tool=pyclonevi
+seed=${SEED}
 start=${start}
 end=${end}
 elapsed_sec=${SECONDS}
