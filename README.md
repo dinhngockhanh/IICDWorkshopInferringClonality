@@ -79,6 +79,10 @@ docker compose run --rm workshop Rscript src/run_decode.R
 
 which inputs the mutation table from file `DECODE_mutation_table.tsv` in folder [data/](https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/tree/main/data).
 
+##  Presentation
+
+The slides for this Workshop can be accessed at https://github.com/dinhngockhanh/IICDWorkshopInferringClonality/blob/main/presentation.pdf.
+
 ## References
 
 1. Tarabichi M, Salcedo A, Deshwar AG, Ni Leathlobhair M, Wintersinger J, Wedge DC, Van Loo P, Morris QD, Boutros PC. A practical guide to cancer subclonal reconstruction from DNA sequencing. Nature methods (2021). https://doi.org/10.1038/s41592-020-01013-2
