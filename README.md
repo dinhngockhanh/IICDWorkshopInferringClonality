@@ -1,4 +1,4 @@
-# IICD Parameter Estimation Workshop: Inferring Cancer Clonality from DNA
+# IICD Workshop: Inferring Cancer Clonality from DNA
 
 ## Installation
 
